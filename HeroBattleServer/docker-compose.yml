@@ -1,0 +1,6 @@
+services:
+  herobattleapp:
+    image: herobattleapp
+    build:
+      context: .
+      dockerfile: HeroBattleServer/HeroBattleApp/Dockerfile

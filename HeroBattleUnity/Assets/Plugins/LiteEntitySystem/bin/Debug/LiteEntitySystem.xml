@@ -1,0 +1,1049 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LiteEntitySystem</name>
+    </assembly>
+    <members>
+        <member name="T:LiteEntitySystem.ClientEntityManager">
+            <summary>
+            Client entity manager
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.ServerTick">
+            <summary>
+            Current interpolated server tick
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.RollBackTick">
+            <summary>
+            Current rollback tick (valid only in Rollback state)
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.CurrentRPCTick">
+            <summary>
+            Tick of currently executing rpc (check only in client RPC methods)
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.IsExecutingRPC">
+            <summary>
+            Is rpc currently executing
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.RawServerTick">
+            <summary>
+            Current state server tick
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.RawTargetServerTick">
+            <summary>
+            Target state server tick
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.LocalPlayer">
+            <summary>
+            Our local player
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.StoredCommands">
+            <summary>
+            Stored input commands count for prediction correction
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.LastProcessedTick">
+            <summary>
+            Player tick processed by server
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.LastReceivedTick">
+            <summary>
+            Last received player tick by server
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.ServerInputBuffer">
+            <summary>
+            Inputs count in server input buffer
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.ServerSendRate">
+            <summary>
+            Send rate of server
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.LerpBufferCount">
+            <summary>
+            States count in interpolation buffer
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.NetPeer">
+            <summary>
+            Client network peer
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ClientEntityManager.NetworkJitter">
+            <summary>
+            Network jitter in milliseconds
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.ClientEntityManager.GetPlayerController``1">
+            <summary>
+            Return client controller if exist
+            </summary>
+            <typeparam name="T">controller type</typeparam>
+            <returns>controller if exist otherwise null</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ClientEntityManager.#ctor(LiteEntitySystem.EntityTypesMap,LiteEntitySystem.InputProcessor,LiteEntitySystem.Transport.AbstractNetPeer,System.Byte,System.Byte)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="typesMap">EntityTypesMap with registered entity types</param>
+            <param name="inputProcessor">Input processor (you can use default InputProcessor/<T/> or derive from abstract one to make your own input serialization</param>
+            <param name="netPeer">Local AbstractPeer</param>
+            <param name="headerByte">Header byte that will be used for packets (to distinguish entity system packets)</param>
+            <param name="framesPerSecond">Fixed framerate of game logic</param>
+        </member>
+        <member name="M:LiteEntitySystem.ClientEntityManager.Create``1(LiteEntitySystem.EntityTypesMap,LiteEntitySystem.Transport.AbstractNetPeer,System.Byte,System.Byte)">
+            <summary>
+            Simplified constructor
+            </summary>
+            <param name="typesMap">EntityTypesMap with registered entity types</param>
+            <param name="netPeer">Local AbstractPeer</param>
+            <param name="headerByte">Header byte that will be used for packets (to distinguish entity system packets)</param>
+            <param name="framesPerSecond">Fixed framerate of game logic</param>
+            <typeparam name="TInput">Main input packet type</typeparam>
+        </member>
+        <member name="M:LiteEntitySystem.ClientEntityManager.Deserialize(System.ReadOnlySpan{System.Byte})">
+            Read incoming data
+            <param name="inData">Incoming data including header byte</param>
+            <returns>Deserialization result</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ClientEntityManager.Update">
+            <summary>
+            Update method, call this every frame
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Collections.AVLTree`1.Count">
+            <summary>
+            Elements count
+            </summary>
+        </member>
+        <member name="T:LiteEntitySystem.ControllerLogic">
+            <summary>
+            Base class for Controller entities
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ControllerLogic.IsBot">
+            <summary>
+            Is controller - AI controller
+            </summary>
+        </member>
+        <member name="T:LiteEntitySystem.AiControllerLogic">
+            <summary>
+            Base class for AI Controller entities
+            </summary>
+        </member>
+        <member name="T:LiteEntitySystem.AiControllerLogic`1">
+            <summary>
+            Base class for AI Controller entities with typed ControlledEntity field
+            </summary>
+        </member>
+        <member name="E:LiteEntitySystem.EntityFilter`1.OnDestroyed">
+            <summary>
+            Called when entity is removed/destroyed
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityFilter`1.SubscribeToConstructed(System.Action{`0},System.Boolean)">
+            <summary>
+            Called when entity created and synced
+            <param name="onConstructed">callback</param>
+            <param name="callOnExisting">call that callback on existing entities in this filter/list</param>
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityFilter`1.UnsubscribeToConstructed(System.Action{`0})">
+            <summary>
+            Called when entity created and synced
+            <param name="onConstructed">callback</param>
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityFlags.UpdateOnClient">
+            <summary>
+            Update entity on client even when entity isn't owned
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityFlags.Updateable">
+            <summary>
+            Update entity on server and on client if entity is owned 
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityFlags.LocalOnly">
+            <summary>
+            Entity is local only without sync (only on server or client no difference)
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityFlags.OnlyForOwner">
+            <summary>
+            Sync entity only for owner player
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityFlags.CustomSync">
+            <summary>
+            Handle sync details before sending to player
+            </summary>
+        </member>
+        <member name="T:LiteEntitySystem.EntityLogic">
+            <summary>
+            Base class for simple (not controlled by controller) entity
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.EntityLogic.Childs">
+            <summary>
+            Child entities (can be used for transforms or as components)
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityLogic.EnableLagCompensationForOwner">
+            <summary>
+            Enable lag compensation for player that owns this entity
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityLogic.DisableLagCompensationForOwner">
+            <summary>
+            Disable lag compensation for player that owns this entity
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityLogic.AddPredictedEntity``1(System.Action{``0})">
+            <summary>
+            Create predicted entity (like projectile) that will be replaced by server entity if prediction is successful
+            </summary>
+            <typeparam name="T">Entity type</typeparam>
+            <param name="initMethod">Method that will be called after entity constructed</param>
+            <returns>Created predicted local entity</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityLogic.SetParent(LiteEntitySystem.EntityLogic)">
+            <summary>
+            Set parent entity
+            </summary>
+            <param name="parentEntity">parent entity</param>
+        </member>
+        <member name="M:LiteEntitySystem.EntityLogic.GetParent``1">
+            <summary>
+            Get parent entity
+            </summary>
+            <typeparam name="T">Type of entity</typeparam>
+            <returns>parent entity</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityLogic.OnLagCompensationStart">
+            <summary>
+            Called when lag compensation was started for this entity
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityLogic.OnLagCompensationEnd">
+            <summary>
+            Called when lag compensation ended for this entity
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.ExecuteFlags.SendToOwner">
+            <summary>Execute RPC for owner of entity</summary>
+        </member>
+        <member name="F:LiteEntitySystem.ExecuteFlags.SendToOther">
+            <summary>Execute RPC for non owners</summary>
+        </member>
+        <member name="F:LiteEntitySystem.ExecuteFlags.SendToAll">
+            <summary>Execute RPC for all players</summary>
+        </member>
+        <member name="F:LiteEntitySystem.ExecuteFlags.ExecuteOnPrediction">
+            <summary>Execute RPC on client for owner of entity on prediction</summary>
+        </member>
+        <member name="F:LiteEntitySystem.ExecuteFlags.ExecuteOnServer">
+            <summary>Execute RPC directly on server</summary>
+        </member>
+        <member name="F:LiteEntitySystem.ExecuteFlags.All">
+            <summary>All flags, send to owner, to others, execute on prediction and on server</summary>
+        </member>
+        <member name="T:LiteEntitySystem.EntityManager">
+            <summary>
+            Base class for client and server manager
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.MaxSyncedEntityCount">
+            <summary>
+            Maximum synchronized (without LocalOnly) entities
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.InvalidEntityId">
+            <summary>
+            Invalid entity id
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.EntityManager.EntitiesCount">
+            <summary>
+            Total entities count (including local)
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.EntityManager.Tick">
+            <summary>
+            Current tick
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.EntityManager.LerpFactor">
+            <summary>
+            Interpolation time between logic and render
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.EntityManager.UpdateMode">
+            <summary>
+            Current update mode (can be used inside entities to separate logic for rollbacks)
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.Mode">
+            <summary>
+            Current mode (Server or Client)
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.IsServer">
+            <summary>
+            Is server
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.IsClient">
+            <summary>
+            Is client
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.FramesPerSecond">
+            <summary>
+            FPS of game logic
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.DeltaTime">
+            <summary>
+            Fixed delta time
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.DeltaTimeF">
+            <summary>
+            Fixed delta time (float for less precision)
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.EntityManager.MaxHistorySize">
+            <summary>
+            Size of history (in ticks) for lag compensation. Tune for your game fps 
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.EntityManager.PlayerId">
+            <summary>
+            Local player id (0 on server)
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.Reset">
+            <summary>
+            Remove all entities and reset all counters and timers
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.GetEntityById``1(LiteEntitySystem.EntitySharedReference)">
+            <summary>
+            Get entity by id
+            </summary>
+            <param name="id">Id of entity</param>
+            <returns>Entity if it exists, null if id == InvalidEntityId or entity is another type or version</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.TryGetEntityById``1(LiteEntitySystem.EntitySharedReference,``0@)">
+            <summary>
+            Try get entity by id
+            throws exception if entity is null or invalid type
+            </summary>
+            <param name="id">Id of entity</param>
+            <param name="entity">out entity if exists otherwise null</param>
+            <returns>true if it exists, false if id == InvalidEntityId or entity is another type or version</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.GetEntities``1">
+            <summary>
+            Get all entities with type
+            </summary>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Entity filter that can be used in foreach</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.GetControllers``1">
+            <summary>
+            Get all controller entities with type
+            </summary>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Entity filter that can be used in foreach</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.GetSingleton``1">
+            <summary>
+            Get existing singleton entity
+            </summary>
+            <typeparam name="T">Singleton entity type</typeparam>
+            <returns>Singleton entity, can throw exceptions on invalid type</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.GetSingletonSafe``1">
+            <summary>
+            Get singleton entity
+            </summary>
+            <typeparam name="T">Singleton entity type</typeparam>
+            <returns>Singleton entity or null if it didn't exists</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.HasSingleton``1">
+            <summary>
+            Is singleton exists and has correct type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.TryGetSingleton``1(``0@)">
+            <summary>
+            Try get singleton entity
+            </summary>
+            <param name="singleton">result singleton entity</param>
+            <typeparam name="T">Singleton type</typeparam>
+            <returns>true if entity exists</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.AddLocalEntity``1(System.Action{``0})">
+            <summary>
+            Add local entity that will be not synchronized
+            </summary>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Created entity or null if entities limit is reached (65535 - <see cref="F:LiteEntitySystem.EntityManager.MaxSyncedEntityCount"/>)</returns>
+        </member>
+        <member name="M:LiteEntitySystem.EntityManager.Update">
+            <summary>
+            Main update method, updates internal fixed timer and do all other stuff
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.EntityTypesMap.EvaluateEntityClassDataHash">
+            <summary>
+            Can be used to detect that server/client has difference
+            </summary>
+            <returns>hash</returns>
+        </member>
+        <member name="T:LiteEntitySystem.EntityTypesMap`1">
+            <summary>
+            Entity types map that will be used for EntityManager
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:LiteEntitySystem.EntityTypesMap`1.Register``1(`0,LiteEntitySystem.EntityConstructor{``0})">
+            <summary>
+            Register new entity type that will be used in game
+            </summary>
+            <param name="id">Enum value that will describe entity class id</param>
+            <param name="constructor">Constructor of entity</param>
+            <typeparam name="TEntity">Type of entity</typeparam>
+        </member>
+        <member name="T:LiteEntitySystem.Extensions.FloatAngle">
+            <summary>
+            Float angle in degress with correct interpolation and overlaps
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Extensions.SyncArray`1.Value">
+            <summary>
+            Changes to this array will NOT sync,
+            so it should be used as readonly!
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Extensions.SyncSquare`1.Value">
+            <summary>
+            Changes to this array will NOT sync,
+            so it should be used as readonly!
+            </summary>
+        </member>
+        <member name="T:LiteEntitySystem.HumanControllerLogic`1">
+            <summary>
+            Base class for human Controller entities
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.HumanControllerLogic`1.ReadInput(`0@)">
+            <summary>
+            Called on client and server to read generated from <see cref="M:LiteEntitySystem.HumanControllerLogic`1.GenerateInput(`0@)"/> input
+            </summary>
+            <param name="input">user defined input structure</param>
+        </member>
+        <member name="M:LiteEntitySystem.HumanControllerLogic`1.GenerateInput(`0@)">
+            <summary>
+            Called on client to generate input
+            </summary>
+        </member>
+        <member name="T:LiteEntitySystem.HumanControllerLogic`2">
+            <summary>
+            Base class for human Controller entities with typed ControlledEntity field
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.Internal.InternalEntity.ClassId">
+            <summary>
+            Entity class id
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.Internal.InternalEntity.Id">
+            <summary>
+            Entity instance id
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.Internal.InternalEntity.CreationTick">
+            <summary>
+            Entity creation tick number that can be more than ushort
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.Internal.InternalEntity.EntityManager">
+            <summary>
+            Entity manager
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.IsServer">
+            <summary>
+            Is entity on server
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.IsClient">
+            <summary>
+            Is entity on server
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.Internal.InternalEntity.Version">
+            <summary>
+            Entity version (for id reuse)
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.IsDestroyed">
+            <summary>
+            Is entity is destroyed
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.IsLocalControlled">
+            <summary>
+            Is entity local controlled
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.IsRemoteControlled">
+            <summary>
+            Is entity remote controlled
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.IsServerControlled">
+            <summary>
+            Is entity is controlled by server
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.ClientManager">
+            <summary>
+            ClientEntityManager that available only on client. Will throw exception if called on server
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.ServerManager">
+            <summary>
+            ServerEntityManager that available only on server. Will throw exception if called on client
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.OwnerId">
+            <summary>
+            Owner player id
+            ServerPlayerId - 0
+            Singletons always controlled by server
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.Internal.InternalEntity.IsLocal">
+            <summary>
+            Is locally created entity
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.Internal.InternalEntity.Destroy">
+            <summary>
+            Destroy entity
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.Internal.InternalEntity.OnDestroy">
+            <summary>
+            Event called on entity destroy
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.Internal.InternalEntity.Update">
+            <summary>
+            Fixed update. Called if entity has attribute <see cref="T:LiteEntitySystem.EntityFlagsAttribute"/> and flag Updateable
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.Internal.InternalEntity.OnRollback">
+            <summary>
+            Called at rollback begin after all values reset to first frame in rollback queue.
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.Internal.InternalEntity.VisualUpdate">
+            <summary>
+            Called only on <see cref="M:LiteEntitySystem.ClientEntityManager.Update"/> and if entity has attribute <see cref="T:LiteEntitySystem.EntityFlagsAttribute"/> and flag Updateable
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.Internal.InternalEntity.OnConstructed">
+            <summary>
+            Called when entity constructed
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.Internal.InternalEntity.RegisterRPC(LiteEntitySystem.RPCRegistrator@)">
+            <summary>
+            Method for registering RPCs and OnChange notifications
+            </summary>
+            <param name="r"></param>
+        </member>
+        <member name="T:LiteEntitySystem.ILogger">
+            <summary>
+            Logger implementation for different situations (client/server/different engine)
+            </summary>
+        </member>
+        <member name="T:LiteEntitySystem.PawnLogic">
+            <summary>
+            Base class for entites that can be controlled by Controller
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.BindOnChange``2(``1,LiteEntitySystem.SyncVar{``0}@,System.Action{``0})">
+            <summary>
+            Bind notification of SyncVar changes to action (OnSync will be called after RPCs and OnConstructs)
+            </summary>
+            <param name="self">Target entity for binding</param>
+            <param name="syncVar">Variable to bind</param>
+            <param name="onChangedAction">Action that will be called when variable changes by sync</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.BindOnChange``2(``1,LiteEntitySystem.SyncVar{``0}@,System.Action{``0},LiteEntitySystem.Internal.OnSyncExecutionOrder)">
+            <summary>
+            Bind notification of SyncVar changes to action
+            </summary>
+            <param name="self">Target entity for binding</param>
+            <param name="syncVar">Variable to bind</param>
+            <param name="onChangedAction">Action that will be called when variable changes by sync</param>
+            <param name="executionOrder">order of execution</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``1(``0,System.Action,LiteEntitySystem.RemoteCall@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action
+            </summary>
+            <param name="self">Target entity with RPC</param>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``2(``0,System.Action{``1},LiteEntitySystem.RemoteCall{``1}@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action with valueType argument
+            </summary>
+            <param name="self">Target entity with RPC</param>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``2(``0,LiteEntitySystem.SpanAction{``1},LiteEntitySystem.RemoteCallSpan{``1}@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action with Span argument
+            </summary>
+            <param name="self">Target entity with RPC</param>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``2(``0,System.Action{``1},LiteEntitySystem.RemoteCallSerializable{``1}@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action with ISpanSerializable argument
+            </summary>
+            <param name="self">Target entity with RPC</param>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``1(System.Action{``0},LiteEntitySystem.RemoteCall@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action
+            </summary>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``2(System.Action{``0,``1},LiteEntitySystem.RemoteCall{``1}@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action with valueType argument
+            </summary>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``2(LiteEntitySystem.SpanAction{``0,``1},LiteEntitySystem.RemoteCallSpan{``1}@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action with Span argument
+            </summary>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="M:LiteEntitySystem.RPCRegistrator.CreateRPCAction``2(System.Action{``0,``1},LiteEntitySystem.RemoteCallSerializable{``1}@,LiteEntitySystem.ExecuteFlags)">
+            <summary>
+            Creates cached rpc action with ISpanSerializable argument
+            </summary>
+            <param name="methodToCall">RPC method to call</param>
+            <param name="remoteCallHandle">output handle that should be used to call rpc</param>
+            <param name="flags">RPC execution flags</param>
+        </member>
+        <member name="T:LiteEntitySystem.ServerEntityManager">
+            <summary>
+            Server entity manager
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.ServerEntityManager.PlayersCount">
+            <summary>
+            Network players count
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.ServerEntityManager.SendRate">
+            <summary>
+            Rate at which server will make and send packets
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.ServerEntityManager.SafeEntityUpdate">
+            <summary>
+            Add try catch to entity updates
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.#ctor(LiteEntitySystem.EntityTypesMap,LiteEntitySystem.InputProcessor,System.Byte,System.Byte,LiteEntitySystem.ServerSendRate)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="typesMap">EntityTypesMap with registered entity types</param>
+            <param name="inputProcessor">Input processor (you can use default InputProcessor/<T/> or derive from abstract one to make your own input serialization</param>
+            <param name="packetHeader">Header byte that will be used for packets (to distinguish entity system packets)</param>
+            <param name="framesPerSecond">Fixed framerate of game logic</param>
+            <param name="sendRate">Send rate of server (depends on fps)</param>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.Create``1(LiteEntitySystem.EntityTypesMap,System.Byte,System.Byte,LiteEntitySystem.ServerSendRate)">
+            <summary>
+            Simplified constructor
+            </summary>
+            <param name="typesMap">EntityTypesMap with registered entity types</param>
+            <param name="packetHeader">Header byte that will be used for packets (to distinguish entity system packets)</param>
+            <param name="framesPerSecond">Fixed framerate of game logic</param>
+            <param name="sendRate">Send rate of server (depends on fps)</param>
+            <typeparam name="TInput">Main input packet type</typeparam>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.AddPlayer(LiteEntitySystem.Transport.AbstractNetPeer)">
+            <summary>
+            Create and add new player
+            </summary>
+            <param name="peer">AbstractPeer to use</param>
+            <returns>Newly created player, null if players count is maximum</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.GetPlayer(System.Byte)">
+            <summary>
+            Get player by owner id
+            </summary>
+            <param name="ownerId">id of player owner (Entity.OwnerId)</param>
+            <returns></returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.RemovePlayer(LiteEntitySystem.Transport.AbstractNetPeer)">
+            <summary>
+            Remove player using NetPeer.Tag (is you assigned it or used <see cref="M:LiteEntitySystem.ServerEntityManager.AddPlayer(LiteEntitySystem.Transport.AbstractNetPeer)"/> with assignToTag)
+            </summary>
+            <param name="player">player to remove</param>
+            <returns>true if player removed successfully, false if player not found</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.RemovePlayer(LiteEntitySystem.NetPlayer)">
+            <summary>
+            Remove player and it's owned entities
+            </summary>
+            <param name="player">player to remove</param>
+            <returns>true if player removed successfully, false if player not found</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.GetPlayerController(LiteEntitySystem.Transport.AbstractNetPeer)">
+            <summary>
+            Returns controller owned by the player
+            </summary>
+            <param name="player">player</param>
+            <returns>Instance if found, null if not</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.GetPlayerController(System.Byte)">
+            <summary>
+            Returns controller owned by the player
+            </summary>
+            <param name="playerId">player</param>
+            <returns>Instance if found, null if not</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.GetPlayerController(LiteEntitySystem.NetPlayer)">
+            <summary>
+            Returns controller owned by the player
+            </summary>
+            <param name="player">player to remove</param>
+            <returns>Instance if found, null if not</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.AddController``1(LiteEntitySystem.NetPlayer,System.Action{``0})">
+            <summary>
+            Add new player controller entity
+            </summary>
+            <param name="owner">Player that owns this controller</param>
+            <param name="initMethod">Method that will be called after entity construction</param>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Created entity or null in case of limit</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.AddController``1(LiteEntitySystem.NetPlayer,LiteEntitySystem.PawnLogic,System.Action{``0})">
+            <summary>
+            Add new player controller entity and start controlling entityToControl
+            </summary>
+            <param name="owner">Player that owns this controller</param>
+            <param name="entityToControl">pawn that will be controlled</param>
+            <param name="initMethod">Method that will be called after entity construction</param>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Created entity or null in case of limit</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.AddAIController``1(System.Action{``0})">
+            <summary>
+            Add new AI controller entity
+            </summary>
+            <param name="initMethod">Method that will be called after entity construction</param>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Created entity or null in case of limit</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.AddSignleton``1(System.Action{``0})">
+            <summary>
+            Add new entity
+            </summary>
+            <param name="initMethod">Method that will be called after entity construction</param>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Created entity or null in case of limit</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.AddEntity``1(System.Action{``0})">
+            <summary>
+            Add new entity
+            </summary>
+            <param name="initMethod">Method that will be called after entity construction</param>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Created entity or null in case of limit</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.AddEntity``1(LiteEntitySystem.EntityLogic,System.Action{``0})">
+            <summary>
+            Add new entity and set parent entity
+            </summary>
+            <param name="parent">Parent entity</param>
+            <param name="initMethod">Method that will be called after entity construction</param>
+            <typeparam name="T">Entity type</typeparam>
+            <returns>Created entity or null in case of limit</returns>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.Deserialize(LiteEntitySystem.Transport.AbstractNetPeer,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Read data for player linked to AbstractNetPeer
+            </summary>
+            <param name="peer">Player that sent input</param>
+            <param name="inData">incoming data with header</param>
+        </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.Deserialize(LiteEntitySystem.NetPlayer,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Read data from NetPlayer
+            </summary>
+            <param name="player">Player that sent input</param>
+            <param name="inData">incoming data with header</param>
+        </member>
+        <member name="T:LiteEntitySystem.SingletonEntityLogic">
+            <summary>
+            Base class for singletons entity that can exists in only one instance
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.SpanReader.GetStringArray(System.Int32)">
+            <summary>
+            Note that "maxStringLength" only limits the number of characters in a string, not its size in bytes.
+            Strings that exceed this parameter are returned as empty
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.SpanReader.GetString(System.Int32)">
+            <summary>
+            Note that "maxLength" only limits the number of characters in a string, not its size in bytes.
+            </summary>
+            <returns>"string.Empty" if value > "maxLength"</returns>
+        </member>
+        <member name="M:LiteEntitySystem.SpanReader.PeekString(System.Int32)">
+            <summary>
+            Note that "maxLength" only limits the number of characters in a string, not its size in bytes.
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.SpanWriter.Put(System.String,System.Int32)">
+            <summary>
+            Note that "maxLength" only limits the number of characters in a string, not its size in bytes.
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.SyncableField.IsClient">
+            <summary>
+            Is syncableField on client
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.SyncableField.IsServer">
+            <summary>
+            Is syncableField on server
+            </summary>
+        </member>
+        <member name="T:FixMath.NET.Fix64">
+            <summary>
+            Represents a Q31.32 fixed-point number.
+            </summary>
+        </member>
+        <member name="F:FixMath.NET.Fix64.Pi">
+            <summary>
+            The value of Pi
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Sign(FixMath.NET.Fix64)">
+            <summary>
+            Returns a number indicating the sign of a Fix64 number.
+            Returns 1 if the value is positive, 0 if is 0, and -1 if it is negative.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Abs(FixMath.NET.Fix64)">
+            <summary>
+            Returns the absolute value of a Fix64 number.
+            Note: Abs(Fix64.MinValue) == Fix64.MaxValue.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.FastAbs(FixMath.NET.Fix64)">
+            <summary>
+            Returns the absolute value of a Fix64 number.
+            FastAbs(Fix64.MinValue) is undefined.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Floor(FixMath.NET.Fix64)">
+            <summary>
+            Returns the largest integer less than or equal to the specified number.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Ceiling(FixMath.NET.Fix64)">
+            <summary>
+            Returns the smallest integral value that is greater than or equal to the specified number.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Round(FixMath.NET.Fix64)">
+            <summary>
+            Rounds a value to the nearest integral value.
+            If the value is halfway between an even and an uneven value, returns the even value.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.op_Addition(FixMath.NET.Fix64,FixMath.NET.Fix64)">
+            <summary>
+            Adds x and y. Performs saturating addition, i.e. in case of overflow, 
+            rounds to MinValue or MaxValue depending on sign of operands.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.FastAdd(FixMath.NET.Fix64,FixMath.NET.Fix64)">
+            <summary>
+            Adds x and y witout performing overflow checking. Should be inlined by the CLR.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.op_Subtraction(FixMath.NET.Fix64,FixMath.NET.Fix64)">
+            <summary>
+            Subtracts y from x. Performs saturating substraction, i.e. in case of overflow, 
+            rounds to MinValue or MaxValue depending on sign of operands.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.FastSub(FixMath.NET.Fix64,FixMath.NET.Fix64)">
+            <summary>
+            Subtracts y from x witout performing overflow checking. Should be inlined by the CLR.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.FastMul(FixMath.NET.Fix64,FixMath.NET.Fix64)">
+            <summary>
+            Performs multiplication without checking for overflow.
+            Useful for performance-critical code where the values are guaranteed not to cause overflow
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.FastMod(FixMath.NET.Fix64,FixMath.NET.Fix64)">
+            <summary>
+            Performs modulo as fast as possible; throws if x == MinValue and y == -1.
+            Use the operator (%) for a more reliable but slower modulo.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Pow2(FixMath.NET.Fix64)">
+            <summary>
+            Returns 2 raised to the specified power.
+            Provides at least 6 decimals of accuracy.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Log2(FixMath.NET.Fix64)">
+            <summary>
+            Returns the base-2 logarithm of a specified number.
+            Provides at least 9 decimals of accuracy.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The argument was non-positive
+            </exception>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Ln(FixMath.NET.Fix64)">
+            <summary>
+            Returns the natural logarithm of a specified number.
+            Provides at least 7 decimals of accuracy.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The argument was non-positive
+            </exception>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Pow(FixMath.NET.Fix64,FixMath.NET.Fix64)">
+            <summary>
+            Returns a specified number raised to the specified power.
+            Provides about 5 digits of accuracy for the result.
+            </summary>
+            <exception cref="T:System.DivideByZeroException">
+            The base was zero, with a negative exponent
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The base was negative, with a non-zero exponent
+            </exception>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Sqrt(FixMath.NET.Fix64)">
+            <summary>
+            Returns the square root of a specified number.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The argument was negative.
+            </exception>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Sin(FixMath.NET.Fix64)">
+            <summary>
+            Returns the Sine of x.
+            The relative error is less than 1E-10 for x in [-2PI, 2PI], and less than 1E-7 in the worst case.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.FastSin(FixMath.NET.Fix64)">
+            <summary>
+            Returns a rough approximation of the Sine of x.
+            This is at least 3 times faster than Sin() on x86 and slightly faster than Math.Sin(),
+            however its accuracy is limited to 4-5 decimals, for small enough values of x.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Cos(FixMath.NET.Fix64)">
+            <summary>
+            Returns the cosine of x.
+            The relative error is less than 1E-10 for x in [-2PI, 2PI], and less than 1E-7 in the worst case.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.FastCos(FixMath.NET.Fix64)">
+            <summary>
+            Returns a rough approximation of the cosine of x.
+            See FastSin for more details.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Tan(FixMath.NET.Fix64)">
+            <summary>
+            Returns the tangent of x.
+            </summary>
+            <remarks>
+            This function is not well-tested. It may be wildly inaccurate.
+            </remarks>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Acos(FixMath.NET.Fix64)">
+            <summary>
+            Returns the arccos of of the specified number, calculated using Atan and Sqrt
+            This function has at least 7 decimals of accuracy.
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.Atan(FixMath.NET.Fix64)">
+            <summary>
+            Returns the arctan of of the specified number, calculated using Euler series
+            This function has at least 7 decimals of accuracy.
+            </summary>
+        </member>
+        <member name="P:FixMath.NET.Fix64.RawValue">
+            <summary>
+            The underlying integer representation
+            </summary>
+        </member>
+        <member name="M:FixMath.NET.Fix64.#ctor(System.Int64)">
+            <summary>
+            This is the constructor from raw value; it can only be used interally.
+            </summary>
+            <param name="rawValue"></param>
+        </member>
+    </members>
+</doc>

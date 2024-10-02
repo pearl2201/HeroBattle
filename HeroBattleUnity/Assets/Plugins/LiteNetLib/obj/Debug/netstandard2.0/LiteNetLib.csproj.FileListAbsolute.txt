@@ -1,0 +1,10 @@
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\bin\Debug\netstandard2.0\LiteNetLib.deps.json
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\bin\Debug\netstandard2.0\LiteNetLib.dll
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\bin\Debug\netstandard2.0\LiteNetLib.pdb
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\obj\Debug\netstandard2.0\LiteNetLib.csproj.AssemblyReference.cache
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\obj\Debug\netstandard2.0\LiteNetLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\obj\Debug\netstandard2.0\LiteNetLib.AssemblyInfoInputs.cache
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\obj\Debug\netstandard2.0\LiteNetLib.AssemblyInfo.cs
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\obj\Debug\netstandard2.0\LiteNetLib.csproj.CoreCompileInputs.cache
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\obj\Debug\netstandard2.0\LiteNetLib.dll
+C:\Users\nguye\Downloads\LiteEntitySystem-master\LiteEntitySystem-master\HeroBattleUnity\Assets\Plugins\LiteNetLib\obj\Debug\netstandard2.0\LiteNetLib.pdb

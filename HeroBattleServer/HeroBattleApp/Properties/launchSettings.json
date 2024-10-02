@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HeroBattleApp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

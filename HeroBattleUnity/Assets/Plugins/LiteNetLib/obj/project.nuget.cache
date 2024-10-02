@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "WF0Q3+2rALE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nguye\\Downloads\\LiteEntitySystem-master\\LiteEntitySystem-master\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nguye\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\nguye\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
