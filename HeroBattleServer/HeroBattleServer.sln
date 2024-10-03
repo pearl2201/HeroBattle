@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiteNetLib", "..\HeroBattle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiteEntitySystem", "..\HeroBattleUnity\Assets\Plugins\LiteEntitySystem\LiteEntitySystem.csproj", "{DD92B4F6-2079-4C87-B09D-FB725144AAF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattleShare", "..\HeroBattleUnity\Assets\Core\Scripts\Shared\HeroBattleShare.csproj", "{354B578E-59B3-42C1-BA66-77473F9CD19A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattleShare", "..\HeroBattleUnity\Assets\Core\Scripts\HeroBattleShare\HeroBattleShare.csproj", "{1FBB5978-81FF-4905-AE86-3B24F3926363}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattleServer", "..\HeroBattleUnity\Assets\Core\Scripts\Server\HeroBattleServer.csproj", "{756D886B-6459-438D-B2A2-E74E7F18176C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattleServer", "..\HeroBattleUnity\Assets\Core\Scripts\HeroBattleServer\HeroBattleServer.csproj", "{32E98D0E-8ABD-4F40-BA2D-BCEB377D8A30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +31,14 @@ Global
 		{DD92B4F6-2079-4C87-B09D-FB725144AAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD92B4F6-2079-4C87-B09D-FB725144AAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD92B4F6-2079-4C87-B09D-FB725144AAF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{756D886B-6459-438D-B2A2-E74E7F18176C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{756D886B-6459-438D-B2A2-E74E7F18176C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{756D886B-6459-438D-B2A2-E74E7F18176C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{756D886B-6459-438D-B2A2-E74E7F18176C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FBB5978-81FF-4905-AE86-3B24F3926363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBB5978-81FF-4905-AE86-3B24F3926363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBB5978-81FF-4905-AE86-3B24F3926363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBB5978-81FF-4905-AE86-3B24F3926363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E98D0E-8ABD-4F40-BA2D-BCEB377D8A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E98D0E-8ABD-4F40-BA2D-BCEB377D8A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E98D0E-8ABD-4F40-BA2D-BCEB377D8A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E98D0E-8ABD-4F40-BA2D-BCEB377D8A30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

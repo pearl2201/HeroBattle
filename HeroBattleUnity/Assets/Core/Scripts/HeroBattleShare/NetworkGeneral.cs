@@ -15,7 +15,8 @@ namespace HeroBattle
         WeaponItem,
         BotController,
         Physics,
-        Projectile
+        Projectile,
+        Random,
     }
 
     public static class NetworkGeneral

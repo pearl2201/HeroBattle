@@ -1,4 +1,7 @@
 ﻿using HeroBattleApp;
+using HeroBattleServer;
+using HeroBattleServer.Factory;
+using HeroBattleShare.Factory;
 using Serilog;
 public class Program
 {
@@ -10,8 +13,8 @@ public class Program
         var seriLogger = new SeriLogger(logger);
         CancellationTokenSource cts = new CancellationTokenSource();
         AppDomain.CurrentDomain.ProcessExit += new EventHandler((obj, e) => cts.Cancel());
-
-        GameServer server = new GameServer(seriLogger);
+        IGameFactorySystem gameFactory = new ServerFactorySystem();
+        GameServer server = new GameServer(seriLogger, gameFactory);
         var fps = TimeSpan.FromSeconds(1f / 20f);
         while (!cts.IsCancellationRequested)
         {

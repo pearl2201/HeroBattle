@@ -136,6 +136,20 @@ namespace LiteEntitySystem
         }
 
         /// <summary>
+        /// Reconnect player
+        /// </summary>
+        /// <param name="peer">AbstractPeer to use</param>
+        /// <param name="playerId">old player Id</param>
+        /// <returns>Previous existed player</returns>
+        public NetPlayer ReconnectPlayer(AbstractNetPeer peer, byte playerId)
+        {
+            var p = GetPlayer(playerId);
+            peer.AssignedPlayer = p;
+            p.State = NetPlayerState.RequestBaseline;
+            return p;
+        }
+
+        /// <summary>
         /// Get player by owner id
         /// </summary>
         /// <param name="ownerId">id of player owner (Entity.OwnerId)</param>

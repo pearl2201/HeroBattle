@@ -1,6 +1,8 @@
 ﻿using FixMath.NET;
 using HeroBattle;
 using HeroBattle.FixedMath;
+using HeroBattleShare;
+using HeroBattleShare.Factory;
 using LiteEntitySystem;
 using LiteEntitySystem.Transport;
 using LiteNetLib;
@@ -10,7 +12,7 @@ using System.Net;
 using System.Net.Sockets;
 using static HeroBattle.GamePackets;
 
-namespace HeroBattleApp
+namespace HeroBattleServer
 {
     public class GameServer : INetEventListener, IDisposable
     {
@@ -19,11 +21,11 @@ namespace HeroBattleApp
         public ushort Tick => _serverEntityManager.Tick;
         private ServerEntityManager _serverEntityManager;
         private LiteEntitySystem.ILogger _logger;
-        public GameServer(LiteEntitySystem.ILogger logger)
+        public GameServer(LiteEntitySystem.ILogger logger, IGameFactorySystem gameFactorySystem)
         {
             _logger = logger;
             LiteEntitySystem.Logger.LoggerImpl = logger;
-
+            AppServices.Instance.GameFactorySystem = gameFactorySystem;
             _netManager = new NetManager(this)
             {
                 AutoRecycle = true,
@@ -38,23 +40,16 @@ namespace HeroBattleApp
             _packetProcessor = new NetPacketProcessor();
             _packetProcessor.SubscribeReusable<JoinPacket, NetPeer>(OnJoinReceived);
 
-            EntityManager.RegisterFieldType<Vector2f>();
-            EntityManager.RegisterFieldType<Fix64>();
-            var typesMap = new EntityTypesMap<GameEntities>()
-                 .Register(GameEntities.Player, e => new BaseCharacter(e))
-                 .Register(GameEntities.Minion, e => new BaseMinion(e))
-                 .Register(GameEntities.BotController, e => new ServerBotController(e))
-                ;
-            
+
             _serverEntityManager = ServerEntityManager.Create<PlayerInputPacket>(
-                typesMap,
+                AppServices.Instance.RegisterTypeMap(),
                 (byte)PacketType.EntitySystem,
                 NetworkGeneral.GameFPS,
                 ServerSendRate.EqualToFPS);
-            
+
 
             //_serverEntityManager.AddSignleton<UnityPhysicsManager>();
-
+            _serverEntityManager.AddSignleton<RandomManager>();
             for (int i = 0; i < 10; i++)
             {
                 int botNum = i;
@@ -70,7 +65,7 @@ namespace HeroBattleApp
                 int botNum = i;
                 var botPlayer = _serverEntityManager.AddEntity<BaseMinion>(e =>
                 {
-                    e.speed = new HeroBattle.FixedMath.Vector2f(Fix64.One, Fix64.One);
+                    
                 });
             }
 

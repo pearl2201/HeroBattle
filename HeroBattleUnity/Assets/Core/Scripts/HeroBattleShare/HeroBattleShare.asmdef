@@ -1,0 +1,17 @@
+{
+    "name": "HeroBattleShare",
+    "rootNamespace": "",
+    "references": [
+        "GUID:381df60a386e48246b5c9a8d98a4a080",
+        "GUID:18e9fe8e398db88438b79a0c15425721"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
