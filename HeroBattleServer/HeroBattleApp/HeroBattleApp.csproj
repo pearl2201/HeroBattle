@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HeroBattle\HeroBattle.csproj" />
+    <ProjectReference Include="..\..\HeroBattleUnity\Assets\Core\Scripts\Server\HeroBattleServer.csproj" />
   </ItemGroup>
 
 </Project>

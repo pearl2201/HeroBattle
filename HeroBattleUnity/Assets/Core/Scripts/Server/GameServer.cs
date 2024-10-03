@@ -5,16 +5,9 @@ using LiteEntitySystem;
 using LiteEntitySystem.Transport;
 using LiteNetLib;
 using LiteNetLib.Utils;
-using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using static HeroBattle.GamePackets;
 
 namespace HeroBattleApp
@@ -25,15 +18,11 @@ namespace HeroBattleApp
         private NetPacketProcessor _packetProcessor;
         public ushort Tick => _serverEntityManager.Tick;
         private ServerEntityManager _serverEntityManager;
-        private Serilog.Core.Logger _logger;
-        public GameServer()
+        private LiteEntitySystem.ILogger _logger;
+        public GameServer(LiteEntitySystem.ILogger logger)
         {
-
-            _logger = new LoggerConfiguration()
-                        .WriteTo.Console()
-                        .CreateLogger();
-
-            LiteEntitySystem.Logger.LoggerImpl = new SeriLogger(_logger);
+            _logger = logger;
+            LiteEntitySystem.Logger.LoggerImpl = logger;
 
             _netManager = new NetManager(this)
             {
@@ -86,12 +75,12 @@ namespace HeroBattleApp
             }
 
             _netManager.Start(10515);
-            _logger.Information("Server start at " + 10515);
+            _logger.Log("Server start at " + 10515);
         }
 
         private void OnJoinReceived(JoinPacket joinPacket, NetPeer peer)
         {
-            _logger.Information("[S] Join packet received: " + joinPacket.UserName);
+            _logger.Log("[S] Join packet received: " + joinPacket.UserName);
 
             var serverPlayer = _serverEntityManager.AddPlayer(new LiteNetLibNetPeer(peer, true));
             var player = _serverEntityManager.AddEntity<BaseCharacter>(e =>
@@ -105,12 +94,12 @@ namespace HeroBattleApp
 
         void INetEventListener.OnPeerConnected(NetPeer peer)
         {
-            _logger.Information("[S] Player connected: " + peer);
+            _logger.Log("[S] Player connected: " + peer);
         }
 
         void INetEventListener.OnPeerDisconnected(NetPeer peer, DisconnectInfo disconnectInfo)
         {
-            _logger.Information("[S] Player disconnected: " + disconnectInfo.Reason);
+            _logger.Log("[S] Player disconnected: " + disconnectInfo.Reason);
 
             if (peer.Tag != null)
             {
@@ -120,7 +109,7 @@ namespace HeroBattleApp
 
         void INetEventListener.OnNetworkError(IPEndPoint endPoint, SocketError socketError)
         {
-            _logger.Information("[S] NetworkError: " + socketError);
+            _logger.Log("[S] NetworkError: " + socketError);
         }
 
         void INetEventListener.OnNetworkReceive(NetPeer peer, NetPacketReader reader, byte channel, DeliveryMethod deliveryMethod)
@@ -138,7 +127,7 @@ namespace HeroBattleApp
                     break;
 
                 default:
-                    _logger.Error("Unhandled packet: " + packetType);
+                    _logger.LogError("Unhandled packet: " + packetType);
                     break;
             }
         }

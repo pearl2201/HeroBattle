@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattle", "HeroBattle\HeroBattle.csproj", "{54B09D16-EC2F-441E-B89A-1791D46CD92D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattleApp", "HeroBattleApp\HeroBattleApp.csproj", "{91AB8B41-31BE-4951-B71E-127F02A08162}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiteNetLib", "..\HeroBattleUnity\Assets\Plugins\LiteNetLib\LiteNetLib.csproj", "{6ACF66CA-9611-437B-B85B-EA1C0D52DA8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiteEntitySystem", "..\HeroBattleUnity\Assets\Plugins\LiteEntitySystem\LiteEntitySystem.csproj", "{DD92B4F6-2079-4C87-B09D-FB725144AAF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattleShare", "..\HeroBattleUnity\Assets\Core\Scripts\Shared\HeroBattleShare.csproj", "{354B578E-59B3-42C1-BA66-77473F9CD19A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroBattleServer", "..\HeroBattleUnity\Assets\Core\Scripts\Server\HeroBattleServer.csproj", "{756D886B-6459-438D-B2A2-E74E7F18176C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{54B09D16-EC2F-441E-B89A-1791D46CD92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54B09D16-EC2F-441E-B89A-1791D46CD92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54B09D16-EC2F-441E-B89A-1791D46CD92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54B09D16-EC2F-441E-B89A-1791D46CD92D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91AB8B41-31BE-4951-B71E-127F02A08162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91AB8B41-31BE-4951-B71E-127F02A08162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91AB8B41-31BE-4951-B71E-127F02A08162}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{DD92B4F6-2079-4C87-B09D-FB725144AAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD92B4F6-2079-4C87-B09D-FB725144AAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD92B4F6-2079-4C87-B09D-FB725144AAF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354B578E-59B3-42C1-BA66-77473F9CD19A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{756D886B-6459-438D-B2A2-E74E7F18176C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{756D886B-6459-438D-B2A2-E74E7F18176C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{756D886B-6459-438D-B2A2-E74E7F18176C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{756D886B-6459-438D-B2A2-E74E7F18176C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

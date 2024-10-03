@@ -2,6 +2,32 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.1": {
+      "HeroBattleShare/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "LiteEntitySystem": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HeroBattleShare.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HeroBattleShare.dll": {}
+        }
+      },
+      "LiteEntitySystem/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "LiteNetLib": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LiteEntitySystem.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LiteEntitySystem.dll": {}
+        }
+      },
       "LiteNetLib/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -15,15 +41,25 @@
     }
   },
   "libraries": {
+    "HeroBattleShare/1.0.0": {
+      "type": "project",
+      "path": "../Shared/HeroBattleShare.csproj",
+      "msbuildProject": "../Shared/HeroBattleShare.csproj"
+    },
+    "LiteEntitySystem/1.0.0": {
+      "type": "project",
+      "path": "../../../Plugins/LiteEntitySystem/LiteEntitySystem.csproj",
+      "msbuildProject": "../../../Plugins/LiteEntitySystem/LiteEntitySystem.csproj"
+    },
     "LiteNetLib/1.0.0": {
       "type": "project",
-      "path": "../LiteNetLib/LiteNetLib.csproj",
-      "msbuildProject": "../LiteNetLib/LiteNetLib.csproj"
+      "path": "../../../Plugins/LiteNetLib/LiteNetLib.csproj",
+      "msbuildProject": "../../../Plugins/LiteNetLib/LiteNetLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "LiteNetLib >= 1.0.0"
+      "HeroBattleShare >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -32,11 +68,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj",
-      "projectName": "LiteEntitySystem",
-      "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj",
+      "projectUniqueName": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\Server\\HeroBattleServer.csproj",
+      "projectName": "HeroBattleServer",
+      "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\Server\\HeroBattleServer.csproj",
       "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-      "outputPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\obj\\",
+      "outputPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,8 +90,8 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj": {
-              "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj"
+            "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\Shared\\HeroBattleShare.csproj": {
+              "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\Shared\\HeroBattleShare.csproj"
             }
           }
         }

@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+!Assets/Core/Data
+!Assets/Core/Scripts/Server
+!Assets/Core/Scripts/Shared
+
+**/*.meta

@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nguye\\Downloads\\LiteEntitySystem-master\\LiteEntitySystem-master\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj",
+      "projectUniqueName": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj",
       "projectName": "LiteNetLib",
-      "projectPath": "C:\\Users\\nguye\\Downloads\\LiteEntitySystem-master\\LiteEntitySystem-master\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj",
+      "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj",
       "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nguye\\Downloads\\LiteEntitySystem-master\\LiteEntitySystem-master\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\obj\\",
+      "outputPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
