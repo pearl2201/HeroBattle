@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(SolutionDir)\bin\$(MSBuildProjectName)\</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Plugins\LiteEntitySystem\LiteEntitySystem.csproj" />
+    <ProjectReference Include="..\HeroBattleShare\HeroBattleShare.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="**/*.meta" Visible="false" />
+  </ItemGroup>
+</Project>

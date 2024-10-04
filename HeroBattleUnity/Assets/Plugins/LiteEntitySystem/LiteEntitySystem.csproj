@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <LangVersion>9</LangVersion>
+      <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+      <BaseOutputPath>$(SolutionDir)\bin\$(MSBuildProjectName)\</BaseOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <DocumentationFile>bin\Debug\LiteEntitySystem.xml</DocumentationFile>
+      <NoWarn>1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <DocumentationFile>bin\Release\LiteEntitySystem.xml</DocumentationFile>
+      <NoWarn>1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LiteNetLib\LiteNetLib.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="K4os.Compression.LZ4">
+        <HintPath>..\Dependencies\K4os.Compression.LZ4.dll</HintPath>
+      </Reference>
+      <Reference Include="RefMagic">
+        <HintPath>ILPart\RefMagic.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Runtime.CompilerServices.Unsafe">
+        <HintPath>..\Dependencies\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+  <ItemGroup>
+    <None Remove="**/*.meta" Visible="false"/>
+  </ItemGroup>
+
+</Project>

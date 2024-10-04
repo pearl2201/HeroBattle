@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(SolutionDir)\bin\$(MSBuildProjectName)\</BaseOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="**/*.meta" Visible="false"/>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.301.41" />
+    <PackageReference Include="CsvHelper" Version="32.0.3" />
+    <PackageReference Include="IdentityModel" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="8.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.5" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.5" />
+
+    <PackageReference Include="AWSSDK.S3" Version="3.7.308.2" />
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.300.93" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+    <PackageReference Include="AWSSDK.CloudFront" Version="3.7.302.19" />
+    <PackageReference Include="AWSSDK.APIGateway" Version="3.7.300.95" />
+    <PackageReference Include="AWSSDK.ApiGatewayManagementApi" Version="3.7.300.93" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
+
+    <PackageReference Include="prometheus-net" Version="8.2.1" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
+    <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.2.1" />
+
+
+    <PackageReference Include="Serilog.Expressions" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="7.0.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+
+    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
+    <PackageReference Include="StackExchange.Redis.Extensions.AspNetCore" Version="10.2.0" />
+    <PackageReference Include="StackExchange.Redis.Extensions.Newtonsoft" Version="10.2.0" />
+
+    <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="3.3.0" />
+
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.5" />
+
+    <PackageReference Include="FirebaseAdmin" Version="3.0.0" />
+    <PackageReference Include="NodaTime.Serialization.JsonNet" Version="3.1.0" />
+    <PackageReference Include="Google.Apis.AndroidPublisher.v3" Version="1.68.0.3464" />
+    <PackageReference Include="AppAny.Quartz.EntityFrameworkCore.Migrations.PostgreSQL" Version="0.5.1" />
+    <PackageReference Include="Quartz.Serialization.Json" Version="3.11.0" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\MasterServer.Application\MasterServer.Application.csproj" />
+    <ProjectReference Include="..\MasterServer.Domain\MasterServer.Domain.csproj" />
+  </ItemGroup>
+</Project>

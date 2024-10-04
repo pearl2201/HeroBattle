@@ -70,3 +70,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+!Assets/Core/Scripts/HeroBattleServer/HeroBattleServer.csproj
+!Assets/Plugins/LiteEntitySystem/LiteEntitySystem.csproj
+!Assets/Plugins/LiteNetLib/LiteNetLib.csproj
+!Assets/Core/Scripts/HeroBattleShare/HeroBattleShare.csproj
