@@ -7,7 +7,7 @@ using StackExchange.Redis.Extensions.Core.Configuration;
 using StackExchange.Redis.Extensions.Newtonsoft;
 
 var builder = Host.CreateApplicationBuilder(args);
-builder.Services.AddHostedService<Worker>();
+builder.Services.AddHostedService<SocketServer>();
 
 var redisConfiguration = builder.Configuration.GetSection("Redis").Get<RedisConfiguration>();
 builder.Services.AddSingleton(redisConfiguration);

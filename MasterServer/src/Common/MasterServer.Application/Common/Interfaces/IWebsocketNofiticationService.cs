@@ -20,7 +20,14 @@ namespace MasterServer.Application.Common.Interfaces
             _queue = queue;
         }
 
-
+        public async Task SendMessageHandler(string packetId, object message, List<long> playerIds)
+        {
+            await Task.WhenAll(playerIds.Select(async x => await _queue.PublishAsync("player_" + x, JsonConvert.SerializeObject(new SsMessage
+            {
+                PacketId = packetId,
+                Payload = JsonConvert.SerializeObject(message)
+            }))));
+        }
     }
 
     public class SsMessage
