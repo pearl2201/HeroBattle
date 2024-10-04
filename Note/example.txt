@@ -1,0 +1,16 @@
+            migrationBuilder.Sql("""
+                CREATE OR REPLACE FUNCTION public.update_assets_iid() RETURNS TRIGGER AS
+                $BODY$
+                BEGIN
+                    UPDATE public."GameAssets" SET "IId" = new."Id" where "AssetId" = new."AssetId";
+                    RETURN new;
+                END;
+                $BODY$
+                language plpgsql;
+                """);
+            migrationBuilder.Sql("""
+                CREATE TRIGGER auto_update_character_iid
+                 AFTER INSERT ON public."GameCharacters"
+                 FOR EACH ROW
+                 EXECUTE PROCEDURE public.update_assets_iid();
+                """);
