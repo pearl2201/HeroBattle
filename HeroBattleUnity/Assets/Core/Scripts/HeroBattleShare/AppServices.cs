@@ -15,6 +15,8 @@ namespace HeroBattleShare
     {
         private static AppServices _instance;
         public IGameFactorySystem GameFactorySystem { get; set; }
+
+        public IGameInputSystem GameInputSystem { get; set; }
         public static AppServices Instance
         {
             get

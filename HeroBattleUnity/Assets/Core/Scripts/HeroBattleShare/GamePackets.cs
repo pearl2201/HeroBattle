@@ -41,5 +41,13 @@ namespace HeroBattle
             public MovementKeys Keys;
             public float Rotation;
         }
+
+        public struct AttackPacket{
+
+        }
+
+        public struct HitPacket{
+            
+        }
     }
 }

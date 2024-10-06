@@ -12,8 +12,8 @@ public class ServerRunner : MonoBehaviour
     {
 
         IGameFactorySystem gameFactory = new ServerFactorySystem();
-
-        server = new GameServer(new UnityLogger(), gameFactory);
+        IGameInputSystem inputSystem = new ServerInputSystem(); 
+        server = new GameServer(new UnityLogger(), gameFactory, inputSystem);
     }
 
     // Update is called once per frame

@@ -21,11 +21,12 @@ namespace HeroBattleServer
         public ushort Tick => _serverEntityManager.Tick;
         private ServerEntityManager _serverEntityManager;
         private LiteEntitySystem.ILogger _logger;
-        public GameServer(LiteEntitySystem.ILogger logger, IGameFactorySystem gameFactorySystem)
+        public GameServer(LiteEntitySystem.ILogger logger, IGameFactorySystem gameFactorySystem, IGameInputSystem gameInputSystem)
         {
             _logger = logger;
             LiteEntitySystem.Logger.LoggerImpl = logger;
             AppServices.Instance.GameFactorySystem = gameFactorySystem;
+            AppServices.Instance.GameInputSystem = gameInputSystem;
             _netManager = new NetManager(this)
             {
                 AutoRecycle = true,
