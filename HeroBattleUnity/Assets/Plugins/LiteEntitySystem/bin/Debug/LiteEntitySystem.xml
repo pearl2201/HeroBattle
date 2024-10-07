@@ -722,6 +722,14 @@
             <param name="peer">AbstractPeer to use</param>
             <returns>Newly created player, null if players count is maximum</returns>
         </member>
+        <member name="M:LiteEntitySystem.ServerEntityManager.ReconnectPlayer(LiteEntitySystem.Transport.AbstractNetPeer,System.Byte)">
+            <summary>
+            Reconnect player
+            </summary>
+            <param name="peer">AbstractPeer to use</param>
+            <param name="playerId">old player Id</param>
+            <returns>Previous existed player</returns>
+        </member>
         <member name="M:LiteEntitySystem.ServerEntityManager.GetPlayer(System.Byte)">
             <summary>
             Get player by owner id
@@ -1044,6 +1052,842 @@
             This is the constructor from raw value; it can only be used interally.
             </summary>
             <param name="rawValue"></param>
+        </member>
+        <member name="M:SharpSteer2.Database.IProximityDatabase`1.AllocateToken(`0)">
+            <summary>
+            allocate a token to represent a given client object in this database
+            </summary>
+            <param name="parentObject"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SharpSteer2.Database.IProximityDatabase`1.Count">
+            <summary>
+            returns the number of tokens in the proximity database
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.Database.ITokenForProximityDatabase`1.UpdateForNewPosition(System.Numerics.Vector3)">
+            <summary>
+            the client object calls this each time its position changes
+            </summary>
+            <param name="position"></param>
+        </member>
+        <member name="M:SharpSteer2.Database.ITokenForProximityDatabase`1.FindNeighbors(System.Numerics.Vector3,System.Single,System.Collections.Generic.List{`0})">
+            <summary>
+            find all neighbors within the given sphere (as center and radius)
+            </summary>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <param name="results"></param>
+        </member>
+        <member name="T:SharpSteer2.Database.LocalityQueryDatabase">
+            <summary>
+            This structure represents the spatial database.  Typically one of
+            these would be created, by a call to lqCreateDatabase, for a given
+            application.
+            </summary>
+        </member>
+        <member name="T:SharpSteer2.Database.LocalityQueryDatabase.ClientProxy">
+            <summary>
+            This structure is a proxy for (and contains a pointer to) a client
+            (application) obj in the spatial database.  One of these exists
+            for each client obj.  This might be included within the
+            structure of a client obj, or could be allocated separately.
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.TraverseBinClientObjectList(SharpSteer2.Database.LocalityQueryDatabase.ClientProxy,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object,System.Numerics.Vector3)">
+            <summary>
+            Given a bin's list of client proxies, traverse the list and invoke
+            the given lqCallBackFunction on each obj that falls within the
+            search radius.
+            </summary>
+            <param name="co"></param>
+            <param name="radiusSquared"></param>
+            <param name="func"></param>
+            <param name="state"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.MapOverAllObjectsInLocalityClipped(System.Numerics.Vector3,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This subroutine of lqMapOverAllObjectsInLocality efficiently
+            traverses of subset of bins specified by max and min bin
+            coordinates.
+            </summary>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <param name="func"></param>
+            <param name="clientQueryState"></param>
+            <param name="minBinX"></param>
+            <param name="minBinY"></param>
+            <param name="minBinZ"></param>
+            <param name="maxBinX"></param>
+            <param name="maxBinY"></param>
+            <param name="maxBinZ"></param>
+        </member>
+        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.MapOverAllOutsideObjects(System.Numerics.Vector3,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object)">
+            <summary>
+            If the query region (sphere) extends outside of the "super-brick"
+            we need to check for objects in the catch-all "other" bin which
+            holds any object which are not inside the regular sub-bricks
+            </summary>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <param name="func"></param>
+            <param name="clientQueryState"></param>
+        </member>
+        <member name="T:SharpSteer2.Database.LocalityQueryProximityDatabase`1">
+            <summary>
+            A AbstractProximityDatabase-style wrapper for the LQ bin lattice system
+            </summary>
+        </member>
+        <member name="T:SharpSteer2.Database.LocalityQueryProximityDatabase`1.TokenType">
+            <summary>
+            "token" to represent objects stored in the database
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalizeDirection(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+            <summary>
+            Transforms a direction in global space to its equivalent in local space.
+            </summary>
+            <param name="basis">The basis which this should operate on</param>
+            <param name="globalDirection">The global space direction to transform.</param>
+            <returns>The global space direction transformed to local space .</returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalizePosition(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+            <summary>
+            Transforms a point in global space to its equivalent in local space.
+            </summary>
+            <param name="basis">The basis which this should operate on</param>
+            <param name="globalPosition">The global space position to transform.</param>
+            <returns>The global space position transformed to local space.</returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.GlobalizePosition(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+            <summary>
+            Transforms a point in local space to its equivalent in global space.
+            </summary>
+            <param name="basis">The basis which this should operate on</param>
+            <param name="localPosition">The local space position to tranform.</param>
+            <returns>The local space position transformed to global space.</returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.GlobalizeDirection(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+            <summary>
+            Transforms a direction in local space to its equivalent in global space.
+            </summary>
+            <param name="basis">The basis which this should operate on</param>
+            <param name="localDirection">The local space direction to tranform.</param>
+            <returns>The local space direction transformed to global space</returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalRotateForwardToSide(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+            <summary>
+            Rotates, in the canonical direction, a vector pointing in the
+            "forward" (+Z) direction to the "side" (+/-X) direction as implied
+            by IsRightHanded.
+            </summary>
+            <param name="basis">The basis which this should operate on</param>
+            <param name="value">The local space vector.</param>
+            <returns>The rotated vector.</returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.SetUnitSideFromForwardAndUp(System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+            <summary>
+            set "side" basis vector to normalized cross product of forward and up
+            </summary>
+            <param name="forward"></param>
+            <param name="side"></param>
+            <param name="up"></param>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasisUF(System.Numerics.Vector3,System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+            <summary>
+            regenerate the orthonormal basis vectors given a new forward
+            (which is expected to have unit length)
+            </summary>
+            <param name="newUnitForward"></param>
+            <param name="forward"></param>
+            <param name="side"></param>
+            <param name="up"></param>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(System.Numerics.Vector3,System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+            <summary>
+            for when the new forward is NOT know to have unit length
+            </summary>
+            <param name="newForward"></param>
+            <param name="forward"></param>
+            <param name="side"></param>
+            <param name="up"></param>
+        </member>
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+            <summary>
+            for supplying both a new forward and and new up
+            </summary>
+            <param name="newForward"></param>
+            <param name="newUp"></param>
+            <param name="forward"></param>
+            <param name="side"></param>
+            <param name="up"></param>
+        </member>
+        <member name="M:SharpSteer2.Helpers.PathwayHelpers.IsInsidePath(SharpSteer2.Pathway.IPathway,System.Numerics.Vector3)">
+            <summary>
+            is the given point inside the path tube?
+            </summary>
+            <param name="pathway"></param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.PathwayHelpers.HowFarOutsidePath(SharpSteer2.Pathway.IPathway,System.Numerics.Vector3)">
+            <summary>
+            how far outside path tube is the given point?  (negative is inside)
+            </summary>
+            <param name="pathway"></param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.RandomHelpers.Random">
+            <summary>
+            Returns a float randomly distributed between 0 and 1
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.RandomHelpers.Random(System.Single,System.Single)">
+            <summary>
+            Returns a float randomly distributed between lowerBound and upperBound
+            </summary>
+            <param name="lowerBound"></param>
+            <param name="upperBound"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Utilities.Lerp(System.Single,System.Single,System.Single)">
+            <summary>
+            Linearly interpolate from A to B by amount T
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Utilities.Clamp(System.Single,System.Single,System.Single)">
+            <summary>
+            Clamp value between min and max
+            </summary>
+            <param name="value"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Utilities.RemapInterval(System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            remap a value specified relative to a pair of bounding values to the corresponding value relative to another pair of bounds.
+            </summary>
+            <remarks>Inspired by (dyna:remap-interval y y0 y1 z0 z1)</remarks>
+            <param name="x">A value</param>
+            <param name="in0">Starting lower bound</param>
+            <param name="in1">Starting upper bound</param>
+            <param name="out0">Ending lower bound</param>
+            <param name="out1">Ending upper bound</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Utilities.RemapIntervalClip(System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Like remapInterval but the result is clipped to remain between out0 and out1
+            </summary>
+            <param name="x">A value</param>
+            <param name="in0">Starting lower bound</param>
+            <param name="in1">Starting upper bound</param>
+            <param name="out0">Ending lower bound</param>
+            <param name="out1">Ending upper bound</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Utilities.IntervalComparison(System.Single,System.Single,System.Single)">
+            <summary>
+            classify a value relative to the interval between two bounds:
+            returns -1 when below the lower bound, returns  0 when between the bounds (inside the interval), returns +1 when above the upper bound
+            </summary>
+            <param name="x"></param>
+            <param name="lowerBound"></param>
+            <param name="upperBound"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Utilities.BlendIntoAccumulator(System.Single,System.Single,System.Single@)">
+            <summary>
+            blends new values into an accumulator to produce a smoothed time series
+            </summary>
+            <remarks>
+            Modifies its third argument, a reference to the float accumulator holding
+            the "smoothed time series."
+            
+            The first argument (smoothRate) is typically made proportional to "dt" the
+            simulation time step.  If smoothRate is 0 the accumulator will not change,
+            if smoothRate is 1 the accumulator will be set to the new value with no
+            smoothing.  Useful values are "near zero".
+            </remarks>
+            <param name="smoothRate"></param>
+            <param name="newValue"></param>
+            <param name="smoothedAccumulator"></param>
+            <example>blendIntoAccumulator (dt * 0.4f, currentFPS, smoothedFPS)</example>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.ParallelComponent(System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            return component of vector parallel to a unit basis vector
+            </summary>
+            <param name="vector"></param>
+            <param name="unitBasis">A unit length basis vector</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.PerpendicularComponent(System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            return component of vector perpendicular to a unit basis vector
+            </summary>
+            <param name="vector"></param>
+            <param name="unitBasis">A unit length basis vector</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.TruncateLength(System.Numerics.Vector3,System.Single)">
+            <summary>
+            clamps the length of a given vector to maxLength.  If the vector is
+            shorter its value is returned unaltered, if the vector is longer
+            the value returned has length of maxLength and is parallel to the
+            original input.
+            </summary>
+            <param name="vector"></param>
+            <param name="maxLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RotateAboutGlobalY(System.Numerics.Vector3,System.Single)">
+            <summary>
+            rotate this vector about the global Y (up) axis by the given angle
+            </summary>
+            <param name="vector"></param>
+            <param name="radians"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RotateAboutGlobalY(System.Numerics.Vector3,System.Single,System.Single@,System.Single@)">
+            <summary>
+            Rotate this vector about the global Y (up) axis by the given angle
+            </summary>
+            <param name="vector"></param>
+            <param name="radians"></param>
+            <param name="sin">Either Sin(radians) or default(float), if default(float) this value will be initialized with Sin(radians)</param>
+            <param name="cos">Either Cos(radians) or default(float), if default(float) this value will be initialized with Cos(radians)</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.SphericalWrapAround(System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+            <summary>
+            Wrap a position around so it is always within 1 radius of the sphere (keeps repeating wrapping until position is within sphere)
+            </summary>
+            <param name="vector"></param>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomVectorOnUnitRadiusXZDisk">
+            <summary>
+            Returns a position randomly distributed on a disk of unit radius
+            on the XZ (Y=0) plane, centered at the origin.  Orientation will be
+            random and length will range between 0 and 1
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomVectorInUnitRadiusSphere">
+            <summary>
+            Returns a position randomly distributed inside a sphere of unit radius
+            centered at the origin.  Orientation will be random and length will range
+            between 0 and 1
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomUnitVector">
+            <summary>
+            Returns a position randomly distributed on the surface of a sphere
+            of unit radius centered at the origin.  Orientation will be random
+            and length will be 1
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomUnitVectorOnXZPlane">
+            <summary>
+            Returns a position randomly distributed on a circle of unit radius
+            on the XZ (Y=0) plane, centered at the origin.  Orientation will be
+            random and length will be 1
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.LimitMaxDeviationAngle(System.Numerics.Vector3,System.Single,System.Numerics.Vector3)">
+            <summary>
+            Clip a vector to be within the given cone
+            </summary>
+            <param name="source">A vector to clip</param>
+            <param name="cosineOfConeAngle">The cosine of the cone angle</param>
+            <param name="basis">The vector along the middle of the cone</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.LimitMinDeviationAngle(System.Numerics.Vector3,System.Single,System.Numerics.Vector3)">
+            <summary>
+            Clip a vector to be outside the given cone
+            </summary>
+            <param name="source">A vector to clip</param>
+            <param name="cosineOfConeAngle">The cosine of the cone angle</param>
+            <param name="basis">The vector along the middle of the cone</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.LimitDeviationAngleUtility(System.Boolean,System.Numerics.Vector3,System.Single,System.Numerics.Vector3)">
+            <summary>
+            used by limitMaxDeviationAngle / limitMinDeviationAngle
+            </summary>
+            <param name="insideOrOutside"></param>
+            <param name="source"></param>
+            <param name="cosineOfConeAngle"></param>
+            <param name="basis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.DistanceFromLine(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Returns the distance between a point and a line.
+            </summary>
+            <param name="point">The point to measure distance to</param>
+            <param name="lineOrigin">A point on the line</param>
+            <param name="lineUnitTangent">A UNIT vector parallel to the line</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.Vector3Helpers.FindPerpendicularIn3d(System.Numerics.Vector3)">
+            <summary>
+            Find any arbitrary vector which is perpendicular to the given vector
+            </summary>
+            <param name="direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.VehicleHelpers.SteerToAvoidObstacle(SharpSteer2.IVehicle,System.Single,SharpSteer2.Obstacles.IObstacle,SharpSteer2.IAnnotationService)">
+            <summary>
+            Returns a steering force to avoid a given obstacle.  The purely
+            lateral steering force will turn our this towards a silhouette edge
+            of the obstacle.  Avoidance is required when (1) the obstacle
+            intersects the this's current path, (2) it is in front of the
+            this, and (3) is within minTimeToCollision seconds of travel at the
+            this's current velocity.  Returns a zero vector value (Vector3::zero)
+            when no avoidance is required.
+            </summary>
+            <param name="vehicle"></param>
+            <param name="minTimeToCollision"></param>
+            <param name="obstacle"></param>
+            <param name="annotation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.VehicleHelpers.SteerToAvoidCloseNeighbors``1(SharpSteer2.IVehicle,System.Single,System.Collections.Generic.IEnumerable{``0},SharpSteer2.IAnnotationService)">
+            <summary>
+            avoidance of "close neighbors"
+            </summary>
+            <remarks>
+            Does a hard steer away from any other agent who comes withing a
+            critical distance.  Ideally this should be replaced with a call
+            to steerForSeparation.
+            </remarks>
+            <typeparam name="TVehicle"></typeparam>
+            <param name="vehicle"></param>
+            <param name="minSeparationDistance"></param>
+            <param name="others"></param>
+            <param name="annotation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.VehicleHelpers.SteerForTargetSpeed(SharpSteer2.IVehicle,System.Single,System.Single,SharpSteer2.IAnnotationService)">
+            <summary>
+            tries to maintain a given speed, returns a maxForce-clipped steering
+            force along the forward/backward axis
+            </summary>
+            <param name="vehicle"></param>
+            <param name="targetSpeed"></param>
+            <param name="maxForce"></param>
+            <param name="annotation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.VehicleHelpers.SteerToAvoidNeighbors(SharpSteer2.IVehicle,System.Single,System.Collections.Generic.IEnumerable{SharpSteer2.IVehicle},SharpSteer2.IAnnotationService)">
+            <summary>
+            Unaligned collision avoidance behavior: avoid colliding with other
+            nearby vehicles moving in unconstrained directions.  Determine which
+            (if any) other other this we would collide with first, then steers
+            to avoid the site of that potential collision.  Returns a steering
+            force vector, which is zero length if there is no impending collision.
+            </summary>
+            <param name="vehicle"></param>
+            <param name="minTimeToCollision"></param>
+            <param name="others"></param>
+            <param name="annotation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.VehicleHelpers.PredictNearestApproachTime(SharpSteer2.IVehicle,SharpSteer2.IVehicle)">
+            <summary>
+            Given two vehicles, based on their current positions and velocities,
+            determine the time until nearest approach
+            </summary>
+            <param name="vehicle"></param>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Helpers.VehicleHelpers.ComputeNearestApproachPositions(SharpSteer2.IVehicle,SharpSteer2.IVehicle,System.Single)">
+            <summary>
+            Given the time until nearest approach (predictNearestApproachTime)
+            determine position of each this at that time, and the distance
+            between them
+            </summary>
+            <param name="vehicle"></param>
+            <param name="other"></param>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpSteer2.IAnnotationService">
+            <summary>
+            Provides methods to annotate the steering behaviors.
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.IAnnotationService.IsEnabled">
+            <summary>
+            Indicates whether annotation is enabled.
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.Line(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+            <summary>
+            Draws an opaque colored line segment between two locations in space.
+            </summary>
+            <param name="startPoint">The start point of the line.</param>
+            <param name="endPoint">The end point of the line.</param>
+            <param name="color">The color of the line.</param>
+            <param name="opacity"></param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.CircleXZ(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+            <summary>
+            Draws a circle on the XZ plane.
+            </summary>
+            <param name="radius">The radius of the circle.</param>
+            <param name="center">The center of the circle.</param>
+            <param name="color">The color of the circle.</param>
+            <param name="segments">The number of segments to use to draw the circle.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.DiskXZ(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+            <summary>
+            Draws a disk on the XZ plane.
+            </summary>
+            <param name="radius">The radius of the disk.</param>
+            <param name="center">The center of the disk.</param>
+            <param name="color">The color of the disk.</param>
+            <param name="segments">The number of segments to use to draw the disk.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.Circle3D(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+            <summary>
+            Draws a circle perpendicular to the given axis.
+            </summary>
+            <param name="radius">The radius of the circle.</param>
+            <param name="center">The center of the circle.</param>
+            <param name="axis">The axis of the circle.</param>
+            <param name="color">The color of the circle.</param>
+            <param name="segments">The number of segments to use to draw the circle.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.Disk3D(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+            <summary>
+            Draws a disk perpendicular to the given axis.
+            </summary>
+            <param name="radius">The radius of the disk.</param>
+            <param name="center">The center of the disk.</param>
+            <param name="axis">The axis of the disk.</param>
+            <param name="color">The color of the disk.</param>
+            <param name="segments">The number of segments to use to draw the disk.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.CircleOrDiskXZ(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32,System.Boolean)">
+            <summary>
+            Draws a circle (not filled) or disk (filled) on the XZ plane.
+            </summary>
+            <param name="radius">The radius of the circle/disk.</param>
+            <param name="center">The center of the circle/disk.</param>
+            <param name="color">The color of the circle/disk.</param>
+            <param name="segments">The number of segments to use to draw the circle/disk.</param>
+            <param name="filled">Flag indicating whether to draw a disk or circle.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.CircleOrDisk3D(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32,System.Boolean)">
+            <summary>
+            Draws a circle (not filled) or disk (filled) perpendicular to the given axis.
+            </summary>
+            <param name="radius">The radius of the circle/disk.</param>
+            <param name="center">The center of the circle/disk.</param>
+            <param name="axis">The axis of the circle/disk.</param>
+            <param name="color">The color of the circle/disk.</param>
+            <param name="segments">The number of segments to use to draw the circle/disk.</param>
+            <param name="filled">Flag indicating whether to draw a disk or circle.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.CircleOrDisk(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Draws a circle (not filled) or disk (filled) perpendicular to the given axis.
+            </summary>
+            <param name="radius">The radius of the circle/disk.</param>
+            <param name="axis">The axis of the circle/disk.</param>
+            <param name="center">The center of the circle/disk.</param>
+            <param name="color">The color of the circle/disk.</param>
+            <param name="segments">The number of segments to use to draw the circle/disk.</param>
+            <param name="filled">Flag indicating whether to draw a disk or circle.</param>
+            <param name="in3D">Flag indicating whether to draw the disk/circle in 3D or the XZ plane.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.AvoidObstacle(System.Single)">
+            <summary>
+            Called when steerToAvoidObstacles decides steering is required.
+            </summary>
+            <param name="minDistanceToCollision"></param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.PathFollowing(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+            <summary>
+            Called when steerToFollowPath decides steering is required.
+            </summary>
+            <param name="future"></param>
+            <param name="onPath"></param>
+            <param name="target"></param>
+            <param name="outside"></param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.AvoidCloseNeighbor(SharpSteer2.IVehicle,System.Single)">
+            <summary>
+            Called when steerToAvoidCloseNeighbors decides steering is required.
+            </summary>
+            <param name="other"></param>
+            <param name="additionalDistance"></param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.AvoidNeighbor(SharpSteer2.IVehicle,System.Single,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Called when steerToAvoidNeighbors decides steering is required.
+            </summary>
+            <param name="threat"></param>
+            <param name="steer"></param>
+            <param name="ourFuture"></param>
+            <param name="threatFuture"></param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.VelocityAcceleration(SharpSteer2.IVehicle)">
+            <summary>
+            Draws lines from the vehicle's position showing its velocity and acceleration.
+            </summary>
+            <param name="vehicle">The vehicle to annotate.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.VelocityAcceleration(SharpSteer2.IVehicle,System.Single)">
+            <summary>
+            Draws lines from the vehicle's position showing its velocity and acceleration.
+            </summary>
+            <param name="vehicle">The vehicle to annotate.</param>
+            <param name="maxLength">The maximum length for the acceleration and velocity lines.</param>
+        </member>
+        <member name="M:SharpSteer2.IAnnotationService.VelocityAcceleration(SharpSteer2.IVehicle,System.Single,System.Single)">
+            <summary>
+            Draws lines from the vehicle's position showing its velocity and acceleration.
+            </summary>
+            <param name="vehicle">The vehicle to annotate.</param>
+            <param name="maxLengthAcceleration">The maximum length for the acceleration line.</param>
+            <param name="maxLengthVelocity">The maximum length for the velocity line.</param>
+        </member>
+        <member name="T:SharpSteer2.IFlowField">
+            <summary>
+            A flow field which can be sampled at arbitrary locations
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.IFlowField.Sample(System.Numerics.Vector3)">
+            <summary>
+            Sample the flow field at the given location
+            </summary>
+            <param name="location"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpSteer2.ILocalSpaceBasis">
+            <summary>
+            transformation as three orthonormal unit basis vectors and the
+            origin of the local space.  These correspond to the "rows" of
+            a 3x4 transformation matrix with [0 0 0 1] as the final column
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.ILocalSpaceBasis.Side">
+            <summary>
+            side-pointing unit basis vector
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.ILocalSpaceBasis.Up">
+            <summary>
+            upward-pointing unit basis vector
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.ILocalSpaceBasis.Forward">
+            <summary>
+            forward-pointing unit basis vector
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.ILocalSpaceBasis.Position">
+            <summary>
+            origin of local space
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.IVehicle.Mass">
+            <summary>
+            mass (defaults to unity so acceleration=force)
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.IVehicle.Radius">
+            <summary>
+            size of bounding sphere, for obstacle avoidance, etc.
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.IVehicle.Velocity">
+            <summary>
+            velocity of vehicle
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.IVehicle.Acceleration">
+            <summary>
+            Gets the acceleration of the vehicle.
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.IVehicle.Speed">
+            <summary>
+            speed of vehicle (may be faster than taking magnitude of velocity)
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.IVehicle.PredictFuturePosition(System.Single)">
+            <summary>
+            predict position of this vehicle at some time in the future (assumes velocity remains constant)
+            </summary>
+            <param name="predictionTime"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SharpSteer2.IVehicle.MaxForce">
+            <summary>
+            the maximum steering force this vehicle can apply
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.IVehicle.MaxSpeed">
+            <summary>
+            the maximum speed this vehicle is allowed to move
+            </summary>
+        </member>
+        <member name="T:SharpSteer2.LocalSpaceBasis">
+            <summary>
+            transformation as three orthonormal unit basis vectors and the
+            origin of the local space.  These correspond to the "rows" of
+            a 3x4 transformation matrix with [0 0 0 1] as the final column
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.LocalSpaceBasis.Side">
+            <summary>
+            side-pointing unit basis vector
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.LocalSpaceBasis.Up">
+            <summary>
+            upward-pointing unit basis vector
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.LocalSpaceBasis.Forward">
+            <summary>
+            forward-pointing unit basis vector
+            </summary>
+        </member>
+        <member name="P:SharpSteer2.LocalSpaceBasis.Position">
+            <summary>
+            origin of local space
+            </summary>
+        </member>
+        <member name="T:SharpSteer2.LocalSpace">
+            <summary>
+            LocalSpaceMixin is a mixin layer, a class template with a paramterized base
+            class.  Allows "LocalSpace-ness" to be layered on any class.
+            </summary>
+        </member>
+        <member name="T:SharpSteer2.Obstacles.IObstacle">
+            <summary>
+            Obstacle: a pure virtual base class for an abstract shape in space, to be
+            used with obstacle avoidance.
+            </summary>
+        </member>
+        <member name="T:SharpSteer2.Obstacles.SphericalObstacle">
+            <summary>
+            SphericalObstacle a simple concrete type of obstacle.
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.Obstacles.SphericalObstacle.SteerToAvoid(SharpSteer2.IVehicle,System.Single)">
+             <summary>
+             Checks for intersection of the given spherical obstacle with a
+             volume of "likely future vehicle positions": a cylinder along the
+             current path, extending minTimeToCollision seconds along the
+             forward axis from current position.
+            
+             If they intersect, a collision is imminent and this function returns
+             a steering force pointing laterally away from the obstacle's center.
+            
+             Returns a zero vector if the obstacle is outside the cylinder
+             </summary>
+             <param name="v"></param>
+             <param name="minTimeToCollision"></param>
+             <returns></returns>
+        </member>
+        <member name="T:SharpSteer2.Pathway.GatewayPathway">
+            <summary>
+            A path consisting of a series of gates which must be passed through
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.Pathway.IPathway.MapPointToPath(System.Numerics.Vector3,System.Numerics.Vector3@,System.Single@)">
+            <summary>
+            Given an arbitrary point ("A"), returns the nearest point ("P") on
+            this path.  Also returns, via output arguments, the path tangent at
+            P and a measure of how far A is outside the Pathway's "tube".  Note
+            that a negative distance indicates A is inside the Pathway.
+            </summary>
+            <param name="point"></param>
+            <param name="tangent"></param>
+            <param name="outside"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Pathway.IPathway.MapPathDistanceToPoint(System.Single)">
+            <summary>
+            given a distance along the path, convert it to a point on the path
+            </summary>
+            <param name="pathDistance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.Pathway.IPathway.MapPointToPathDistance(System.Numerics.Vector3)">
+            <summary>
+            Given an arbitrary point, convert it to a distance along the path.
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpSteer2.Pathway.PolylinePathway">
+            <summary>
+            PolylinePathway: a simple implementation of the Pathway protocol.  The path
+            is a "polyline" a series of line segments between specified points.  A
+            radius defines a volume for the path which is the union of a sphere at each
+            point and a cylinder along each segment.
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.Pathway.PolylinePathway.#ctor(System.Collections.Generic.IList{System.Numerics.Vector3},System.Single,System.Boolean)">
+            <summary>
+            construct a PolylinePathway given the number of points (vertices),
+            an array of points, and a path radius.
+            </summary>
+            <param name="points"></param>
+            <param name="radius"></param>
+            <param name="cyclic"></param>
+        </member>
+        <member name="T:SharpSteer2.Pathway.TrianglePathway">
+            <summary>
+            A pathway made out of triangular segments
+            </summary>
+        </member>
+        <member name="M:SharpSteer2.SimpleVehicle.AdjustRawSteeringForce(System.Numerics.Vector3,System.Single)">
+            <summary>
+            adjust the steering force passed to applySteeringForce.
+            allows a specific vehicle class to redefine this adjustment.
+            default is to disallow backward-facing steering at low speed.
+            </summary>
+            <param name="force"></param>
+            <param name="deltaTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpSteer2.SimpleVehicle.ApplyBrakingForce(System.Single,System.Single)">
+            <summary>
+            apply a given braking force (for a given dt) to our momentum.
+            </summary>
+            <param name="rate"></param>
+            <param name="deltaTime"></param>
+        </member>
+        <member name="M:SharpSteer2.SimpleVehicle.PredictFuturePosition(System.Single)">
+            <summary>
+            predict position of this vehicle at some time in the future (assumes velocity remains constant)
+            </summary>
+            <param name="predictionTime"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

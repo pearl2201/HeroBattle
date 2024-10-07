@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="**/*.meta" Visible="false"/>
+    <None Remove="**/*.meta" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Plugins\" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "slcaVgGxjEewZZjr+tgkywtZU1zemhMBOoGXv6sv0S+ZLgQ6jv7Xx+Yq5Ez2KeHP2IUbQPNHSGTD1OfY4sGwxQ==",
+  "dgSpecHash": "f2pyEMPkwkE=",
   "success": true,
-  "projectFilePath": "/Users/nguyenngoc/Projects/Ann/HeroBattle/HeroBattleUnity/Assets/Core/Scripts/HeroBattleServer/HeroBattleServer.csproj",
+  "projectFilePath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleServer\\HeroBattleServer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

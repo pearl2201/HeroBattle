@@ -8,9 +8,9 @@ namespace HeroBattle.FixedMath
 {
     public struct Vector2f : INetSerializable
     {
-        public Fix64 x; public Fix64 y;
+        public float x; public float y;
 
-        public Vector2f(Fix64 x, Fix64 y)
+        public Vector2f(float x, float y)
         {
             this.x = x;
             this.y = y;
@@ -18,17 +18,17 @@ namespace HeroBattle.FixedMath
 
         public void Serialize(NetDataWriter writer)
         {
-            writer.Put(x.RawValue);
-            writer.Put(y.RawValue);
+            writer.Put(x);
+            writer.Put(y);
         }
 
         public void Deserialize(NetDataReader reader)
         {
-            x = Fix64.FromRaw(reader.GetLong());
-            y = Fix64.FromRaw(reader.GetLong());
+            x = reader.GetFloat();
+            y = reader.GetFloat();
         }
 
-        public static Vector2f operator *(Vector2f x, Fix64 y)
+        public static Vector2f operator *(Vector2f x, float y)
         {
             return new Vector2f { x = x.x * y, y = x.y * y };
         }

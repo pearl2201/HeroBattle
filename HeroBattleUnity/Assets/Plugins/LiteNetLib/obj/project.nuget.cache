@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "pnBCLjNR7VVT6RDJxoW7SQBrZ7/HOdVoggsCNtRo2ZjvVnBRNzvt3SxoiwOZb7ul14xnPxWwpwHMpYhHzCamtA==",
+  "dgSpecHash": "BBaN7+cC4Fw=",
   "success": true,
-  "projectFilePath": "/Users/nguyenngoc/Projects/Ann/HeroBattle/HeroBattleUnity/Assets/Plugins/LiteNetLib/LiteNetLib.csproj",
+  "projectFilePath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj",
   "expectedPackageFiles": [
-    "/Users/nguyenngoc/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/Users/nguyenngoc/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\nguye\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\nguye\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

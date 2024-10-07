@@ -27,32 +27,35 @@
     ]
   },
   "packageFolders": {
-    "/Users/nguyenngoc/.nuget/packages/": {}
+    "C:\\Users\\nguye\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nguyenngoc/Projects/Ann/HeroBattle/HeroBattleUnity/Assets/Plugins/LiteEntitySystem/LiteEntitySystem.csproj",
+      "projectUniqueName": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj",
       "projectName": "LiteEntitySystem",
-      "projectPath": "/Users/nguyenngoc/Projects/Ann/HeroBattle/HeroBattleUnity/Assets/Plugins/LiteEntitySystem/LiteEntitySystem.csproj",
-      "packagesPath": "/Users/nguyenngoc/.nuget/packages/",
-      "outputPath": "/Users/nguyenngoc/Projects/Ann/HeroBattle/HeroBattleUnity/Assets/Plugins/LiteEntitySystem/obj/",
+      "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj",
+      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+      "outputPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/nguyenngoc/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "/Users/nguyenngoc/Projects/Ann/HeroBattle/HeroBattleUnity/Assets/Plugins/LiteNetLib/LiteNetLib.csproj": {
-              "projectPath": "/Users/nguyenngoc/Projects/Ann/HeroBattle/HeroBattleUnity/Assets/Plugins/LiteNetLib/LiteNetLib.csproj"
+            "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj": {
+              "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteNetLib\\LiteNetLib.csproj"
             }
           }
         }
@@ -61,6 +64,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -82,7 +90,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
