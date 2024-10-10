@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace SharpSteer2.Helpers
 {
-    internal static class Colors
+    public static class Colors
     {
         public static readonly Vector3f White = new Vector3f(1, 1, 1);
 

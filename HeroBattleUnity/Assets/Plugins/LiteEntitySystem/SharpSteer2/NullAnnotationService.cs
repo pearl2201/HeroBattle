@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace SharpSteer2
 {
-    class NullAnnotationService
+    public class NullAnnotationService
         :IAnnotationService
     {
         public bool IsEnabled

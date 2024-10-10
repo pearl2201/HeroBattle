@@ -7,7 +7,7 @@ namespace HeroBattleServer.Factory
     {
         public Vector2f GetPlayerInput()
         {
-           return new Vector2f(new FixMath.NET.Fix64(0), new FixMath.NET.Fix64(0));
+           return new Vector2f(0, 0);
         }
     }
 }

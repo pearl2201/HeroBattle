@@ -446,6 +446,775 @@
             so it should be used as readonly!
             </summary>
         </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M11">
+            <summary>
+            Value at row 1, column 1 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M12">
+            <summary>
+            Value at row 1, column 2 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M13">
+            <summary>
+            Value at row 1, column 3 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M14">
+            <summary>
+            Value at row 1, column 4 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M21">
+            <summary>
+            Value at row 2, column 1 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M22">
+            <summary>
+            Value at row 2, column 2 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M23">
+            <summary>
+            Value at row 2, column 3 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M24">
+            <summary>
+            Value at row 2, column 4 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M31">
+            <summary>
+            Value at row 3, column 1 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M32">
+            <summary>
+            Value at row 3, column 2 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M33">
+            <summary>
+            Value at row 3, column 3 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M34">
+            <summary>
+            Value at row 3, column 4 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M41">
+            <summary>
+            Value at row 4, column 1 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M42">
+            <summary>
+            Value at row 4, column 2 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M43">
+            <summary>
+            Value at row 4, column 3 of the matrix.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Matrix4x4f.M44">
+            <summary>
+            Value at row 4, column 4 of the matrix.
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.FixedMath.Matrix4x4f.Identity">
+            <summary>
+            Returns the multiplicative identity matrix.
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.FixedMath.Matrix4x4f.IsIdentity">
+            <summary>
+            Returns whether the matrix is the identity matrix.
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.FixedMath.Matrix4x4f.Translation">
+            <summary>
+            Gets or sets the translation component of this matrix.
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Constructs a Matrix4x4f from the given components.
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateBillboard(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a spherical billboard that rotates around a specified object position.
+            </summary>
+            <param name="objectPosition">Position of the object the billboard will rotate around.</param>
+            <param name="cameraPosition">Position of the camera.</param>
+            <param name="cameraUpVector">The up vector of the camera.</param>
+            <param name="cameraForwardVector">The forward vector of the camera.</param>
+            <returns>The created billboard matrix</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateConstrainedBillboard(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a cylindrical billboard that rotates around a specified axis.
+            </summary>
+            <param name="objectPosition">Position of the object the billboard will rotate around.</param>
+            <param name="cameraPosition">Position of the camera.</param>
+            <param name="rotateAxis">Axis to rotate the billboard around.</param>
+            <param name="cameraForwardVector">Forward vector of the camera.</param>
+            <param name="objectForwardVector">Forward vector of the object.</param>
+            <returns>The created billboard matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateTranslation(HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a translation matrix.
+            </summary>
+            <param name="position">The amount to translate in each axis.</param>
+            <returns>The translation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateTranslation(System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a translation matrix.
+            </summary>
+            <param name="xPosition">The amount to translate on the X-axis.</param>
+            <param name="yPosition">The amount to translate on the Y-axis.</param>
+            <param name="zPosition">The amount to translate on the Z-axis.</param>
+            <returns>The translation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateScale(System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a scaling matrix.
+            </summary>
+            <param name="xScale">Value to scale by on the X-axis.</param>
+            <param name="yScale">Value to scale by on the Y-axis.</param>
+            <param name="zScale">Value to scale by on the Z-axis.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateScale(System.Single,System.Single,System.Single,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a scaling matrix with a center point.
+            </summary>
+            <param name="xScale">Value to scale by on the X-axis.</param>
+            <param name="yScale">Value to scale by on the Y-axis.</param>
+            <param name="zScale">Value to scale by on the Z-axis.</param>
+            <param name="centerPoint">The center point.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateScale(HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a scaling matrix.
+            </summary>
+            <param name="scales">The vector containing the amount to scale by on each axis.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateScale(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a scaling matrix with a center point.
+            </summary>
+            <param name="scales">The vector containing the amount to scale by on each axis.</param>
+            <param name="centerPoint">The center point.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateScale(System.Single)">
+            <summary>
+            Creates a uniform scaling matrix that scales equally on each axis.
+            </summary>
+            <param name="scale">The uniform scaling factor.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateScale(System.Single,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a uniform scaling matrix that scales equally on each axis with a center point.
+            </summary>
+            <param name="scale">The uniform scaling factor.</param>
+            <param name="centerPoint">The center point.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateRotationX(System.Single)">
+            <summary>
+            Creates a matrix for rotating points around the X-axis.
+            </summary>
+            <param name="radians">The amount, in radians, by which to rotate around the X-axis.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateRotationX(System.Single,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a matrix for rotating points around the X-axis, from a center point.
+            </summary>
+            <param name="radians">The amount, in radians, by which to rotate around the X-axis.</param>
+            <param name="centerPoint">The center point.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateRotationY(System.Single)">
+            <summary>
+            Creates a matrix for rotating points around the Y-axis.
+            </summary>
+            <param name="radians">The amount, in radians, by which to rotate around the Y-axis.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateRotationY(System.Single,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a matrix for rotating points around the Y-axis, from a center point.
+            </summary>
+            <param name="radians">The amount, in radians, by which to rotate around the Y-axis.</param>
+            <param name="centerPoint">The center point.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateRotationZ(System.Single)">
+            <summary>
+            Creates a matrix for rotating points around the Z-axis.
+            </summary>
+            <param name="radians">The amount, in radians, by which to rotate around the Z-axis.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateRotationZ(System.Single,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a matrix for rotating points around the Z-axis, from a center point.
+            </summary>
+            <param name="radians">The amount, in radians, by which to rotate around the Z-axis.</param>
+            <param name="centerPoint">The center point.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateFromAxisAngle(HeroBattle.FixedMath.Vector3f,System.Single)">
+            <summary>
+            Creates a matrix that rotates around an arbitrary vector.
+            </summary>
+            <param name="axis">The axis to rotate around.</param>
+            <param name="angle">The angle to rotate around the given axis, in radians.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreatePerspectiveFieldOfView(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a perspective projection matrix based on a field of view, aspect ratio, and near and far view plane distances. 
+            </summary>
+            <param name="fieldOfView">Field of view in the y direction, in radians.</param>
+            <param name="aspectRatio">Aspect ratio, defined as view space width divided by height.</param>
+            <param name="nearPlaneDistance">Distance to the near view plane.</param>
+            <param name="farPlaneDistance">Distance to the far view plane.</param>
+            <returns>The perspective projection matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreatePerspective(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a perspective projection matrix from the given view volume dimensions.
+            </summary>
+            <param name="width">Width of the view volume at the near view plane.</param>
+            <param name="height">Height of the view volume at the near view plane.</param>
+            <param name="nearPlaneDistance">Distance to the near view plane.</param>
+            <param name="farPlaneDistance">Distance to the far view plane.</param>
+            <returns>The perspective projection matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreatePerspectiveOffCenter(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a customized, perspective projection matrix.
+            </summary>
+            <param name="left">Minimum x-value of the view volume at the near view plane.</param>
+            <param name="right">Maximum x-value of the view volume at the near view plane.</param>
+            <param name="bottom">Minimum y-value of the view volume at the near view plane.</param>
+            <param name="top">Maximum y-value of the view volume at the near view plane.</param>
+            <param name="nearPlaneDistance">Distance to the near view plane.</param>
+            <param name="farPlaneDistance">Distance to of the far view plane.</param>
+            <returns>The perspective projection matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateOrthographic(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates an orthographic perspective matrix from the given view volume dimensions.
+            </summary>
+            <param name="width">Width of the view volume.</param>
+            <param name="height">Height of the view volume.</param>
+            <param name="zNearPlane">Minimum Z-value of the view volume.</param>
+            <param name="zFarPlane">Maximum Z-value of the view volume.</param>
+            <returns>The orthographic projection matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateOrthographicOffCenter(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Builds a customized, orthographic projection matrix.
+            </summary>
+            <param name="left">Minimum X-value of the view volume.</param>
+            <param name="right">Maximum X-value of the view volume.</param>
+            <param name="bottom">Minimum Y-value of the view volume.</param>
+            <param name="top">Maximum Y-value of the view volume.</param>
+            <param name="zNearPlane">Minimum Z-value of the view volume.</param>
+            <param name="zFarPlane">Maximum Z-value of the view volume.</param>
+            <returns>The orthographic projection matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateLookAt(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a view matrix.
+            </summary>
+            <param name="cameraPosition">The position of the camera.</param>
+            <param name="cameraTarget">The target towards which the camera is pointing.</param>
+            <param name="cameraUpVector">The direction that is "up" from the camera's point of view.</param>
+            <returns>The view matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateWorld(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
+            <summary>
+            Creates a world matrix with the specified parameters.
+            </summary>
+            <param name="position">The position of the object; used in translation operations.</param>
+            <param name="forward">Forward direction of the object.</param>
+            <param name="up">Upward direction of the object; usually [0, 1, 0].</param>
+            <returns>The world matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateFromQuaternion(LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Creates a rotation matrix from the given Quaternion rotation value.
+            </summary>
+            <param name="quaternion">The source Quaternion.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.CreateFromYawPitchRoll(System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a rotation matrix from the specified yaw, pitch, and roll.
+            </summary>
+            <param name="yaw">Angle of rotation, in radians, around the Y-axis.</param>
+            <param name="pitch">Angle of rotation, in radians, around the X-axis.</param>
+            <param name="roll">Angle of rotation, in radians, around the Z-axis.</param>
+            <returns>The rotation matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.GetDeterminant">
+            <summary>
+            Calculates the determinant of the matrix.
+            </summary>
+            <returns>The determinant of the matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Invert(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f@)">
+            <summary>
+            Attempts to calculate the inverse of the given matrix. If successful, result will contain the inverted matrix.
+            </summary>
+            <param name="matrix">The source matrix to invert.</param>
+            <param name="result">If successful, contains the inverted matrix.</param>
+            <returns>True if the source matrix could be inverted; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Decompose(LiteEntitySystem.FixedMath.Matrix4x4f,HeroBattle.FixedMath.Vector3f@,LiteEntitySystem.FixedMath.Quaternion@,HeroBattle.FixedMath.Vector3f@)">
+            <summary>
+            Attempts to extract the scale, translation, and rotation components from the given scale/rotation/translation matrix.
+            If successful, the out parameters will contained the extracted values.
+            </summary>
+            <param name="matrix">The source matrix.</param>
+            <param name="scale">The scaling component of the transformation matrix.</param>
+            <param name="rotation">The rotation component of the transformation matrix.</param>
+            <param name="translation">The translation component of the transformation matrix</param>
+            <returns>True if the source matrix was successfully decomposed; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Transform(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Transforms the given matrix by applying the given Quaternion rotation.
+            </summary>
+            <param name="value">The source matrix to transform.</param>
+            <param name="rotation">The rotation to apply.</param>
+            <returns>The transformed matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Transpose(LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Transposes the rows and columns of a matrix.
+            </summary>
+            <param name="matrix">The source matrix.</param>
+            <returns>The transposed matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Lerp(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f,System.Single)">
+            <summary>
+            Linearly interpolates between the corresponding values of two matrices.
+            </summary>
+            <param name="matrix1">The first source matrix.</param>
+            <param name="matrix2">The second source matrix.</param>
+            <param name="amount">The relative weight of the second source matrix.</param>
+            <returns>The interpolated matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Negate(LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Returns a new matrix with the negated elements of the given matrix.
+            </summary>
+            <param name="value">The source matrix.</param>
+            <returns>The negated matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Add(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Adds two matrices together.
+            </summary>
+            <param name="value1">The first source matrix.</param>
+            <param name="value2">The second source matrix.</param>
+            <returns>The resulting matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Subtract(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Subtracts the second matrix from the first.
+            </summary>
+            <param name="value1">The first source matrix.</param>
+            <param name="value2">The second source matrix.</param>
+            <returns>The result of the subtraction.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Multiply(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Multiplies a matrix by another matrix.
+            </summary>
+            <param name="value1">The first source matrix.</param>
+            <param name="value2">The second source matrix.</param>
+            <returns>The result of the multiplication.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Multiply(LiteEntitySystem.FixedMath.Matrix4x4f,System.Single)">
+            <summary>
+            Multiplies a matrix by a scalar value.
+            </summary>
+            <param name="value1">The source matrix.</param>
+            <param name="value2">The scaling factor.</param>
+            <returns>The scaled matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.op_UnaryNegation(LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Returns a new matrix with the negated elements of the given matrix.
+            </summary>
+            <param name="value">The source matrix.</param>
+            <returns>The negated matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.op_Addition(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Adds two matrices together.
+            </summary>
+            <param name="value1">The first source matrix.</param>
+            <param name="value2">The second source matrix.</param>
+            <returns>The resulting matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.op_Subtraction(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Subtracts the second matrix from the first.
+            </summary>
+            <param name="value1">The first source matrix.</param>
+            <param name="value2">The second source matrix.</param>
+            <returns>The result of the subtraction.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.op_Multiply(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Multiplies a matrix by another matrix.
+            </summary>
+            <param name="value1">The first source matrix.</param>
+            <param name="value2">The second source matrix.</param>
+            <returns>The result of the multiplication.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.op_Multiply(LiteEntitySystem.FixedMath.Matrix4x4f,System.Single)">
+            <summary>
+            Multiplies a matrix by a scalar value.
+            </summary>
+            <param name="value1">The source matrix.</param>
+            <param name="value2">The scaling factor.</param>
+            <returns>The scaled matrix.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.op_Equality(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Returns a boolean indicating whether the given two matrices are equal.
+            </summary>
+            <param name="value1">The first matrix to compare.</param>
+            <param name="value2">The second matrix to compare.</param>
+            <returns>True if the given matrices are equal; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.op_Inequality(LiteEntitySystem.FixedMath.Matrix4x4f,LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Returns a boolean indicating whether the given two matrices are not equal.
+            </summary>
+            <param name="value1">The first matrix to compare.</param>
+            <param name="value2">The second matrix to compare.</param>
+            <returns>True if the given matrices are not equal; False if they are equal.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Equals(LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Returns a boolean indicating whether this matrix instance is equal to the other given matrix.
+            </summary>
+            <param name="other">The matrix to compare this instance to.</param>
+            <returns>True if the matrices are equal; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.Equals(System.Object)">
+            <summary>
+            Returns a boolean indicating whether the given Object is equal to this matrix instance.
+            </summary>
+            <param name="obj">The Object to compare against.</param>
+            <returns>True if the Object is equal to this matrix; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.ToString">
+            <summary>
+            Returns a String representing this matrix instance.
+            </summary>
+            <returns>The string representation.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Matrix4x4f.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Quaternion.X">
+            <summary>
+            Specifies the X-value of the vector component of the Quaternion.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Quaternion.Y">
+            <summary>
+            Specifies the Y-value of the vector component of the Quaternion.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Quaternion.Z">
+            <summary>
+            Specifies the Z-value of the vector component of the Quaternion.
+            </summary>
+        </member>
+        <member name="F:LiteEntitySystem.FixedMath.Quaternion.W">
+            <summary>
+            Specifies the rotation component of the Quaternion.
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.FixedMath.Quaternion.Identity">
+            <summary>
+            Returns a Quaternion representing no rotation. 
+            </summary>
+        </member>
+        <member name="P:LiteEntitySystem.FixedMath.Quaternion.IsIdentity">
+            <summary>
+            Returns whether the Quaternion is the identity Quaternion.
+            </summary>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Constructs a Quaternion from the given components.
+            </summary>
+            <param name="x">The X component of the Quaternion.</param>
+            <param name="y">The Y component of the Quaternion.</param>
+            <param name="z">The Z component of the Quaternion.</param>
+            <param name="w">The W component of the Quaternion.</param>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.#ctor(HeroBattle.FixedMath.Vector3f,System.Single)">
+            <summary>
+            Constructs a Quaternion from the given vector and rotation parts.
+            </summary>
+            <param name="vectorPart">The vector part of the Quaternion.</param>
+            <param name="scalarPart">The rotation part of the Quaternion.</param>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Length">
+            <summary>
+            Calculates the length of the Quaternion.
+            </summary>
+            <returns>The computed length of the Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.LengthSquared">
+            <summary>
+            Calculates the length squared of the Quaternion. This operation is cheaper than Length().
+            </summary>
+            <returns>The length squared of the Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Normalize(LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Divides each component of the Quaternion by the length of the Quaternion.
+            </summary>
+            <param name="value">The source Quaternion.</param>
+            <returns>The normalized Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Conjugate(LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Creates the conjugate of a specified Quaternion.
+            </summary>
+            <param name="value">The Quaternion of which to return the conjugate.</param>
+            <returns>A new Quaternion that is the conjugate of the specified one.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Inverse(LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Returns the inverse of a Quaternion.
+            </summary>
+            <param name="value">The source Quaternion.</param>
+            <returns>The inverted Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.CreateFromAxisAngle(HeroBattle.FixedMath.Vector3f,System.Single)">
+            <summary>
+            Creates a Quaternion from a vector and an angle to rotate about the vector.
+            </summary>
+            <param name="axis">The vector to rotate around.</param>
+            <param name="angle">The angle, in radians, to rotate around the vector.</param>
+            <returns>The created Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.CreateFromYawPitchRoll(System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a new Quaternion from the given yaw, pitch, and roll, in radians.
+            </summary>
+            <param name="yaw">The yaw angle, in radians, around the Y-axis.</param>
+            <param name="pitch">The pitch angle, in radians, around the X-axis.</param>
+            <param name="roll">The roll angle, in radians, around the Z-axis.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.CreateFromRotationMatrix(LiteEntitySystem.FixedMath.Matrix4x4f)">
+            <summary>
+            Creates a Quaternion from the given rotation matrix.
+            </summary>
+            <param name="matrix">The rotation matrix.</param>
+            <returns>The created Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Dot(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Calculates the dot product of two Quaternions.
+            </summary>
+            <param name="quaternion1">The first source Quaternion.</param>
+            <param name="quaternion2">The second source Quaternion.</param>
+            <returns>The dot product of the Quaternions.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Slerp(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion,System.Single)">
+            <summary>
+            Interpolates between two quaternions, using spherical linear interpolation.
+            </summary>
+            <param name="quaternion1">The first source Quaternion.</param>
+            <param name="quaternion2">The second source Quaternion.</param>
+            <param name="amount">The relative weight of the second source Quaternion in the interpolation.</param>
+            <returns>The interpolated Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Lerp(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion,System.Single)">
+            <summary>
+             Linearly interpolates between two quaternions.
+            </summary>
+            <param name="quaternion1">The first source Quaternion.</param>
+            <param name="quaternion2">The second source Quaternion.</param>
+            <param name="amount">The relative weight of the second source Quaternion in the interpolation.</param>
+            <returns>The interpolated Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Concatenate(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Concatenates two Quaternions; the result represents the value1 rotation followed by the value2 rotation.
+            </summary>
+            <param name="value1">The first Quaternion rotation in the series.</param>
+            <param name="value2">The second Quaternion rotation in the series.</param>
+            <returns>A new Quaternion representing the concatenation of the value1 rotation followed by the value2 rotation.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Negate(LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Flips the sign of each component of the quaternion.
+            </summary>
+            <param name="value">The source Quaternion.</param>
+            <returns>The negated Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Add(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Adds two Quaternions element-by-element.
+            </summary>
+            <param name="value1">The first source Quaternion.</param>
+            <param name="value2">The second source Quaternion.</param>
+            <returns>The result of adding the Quaternions.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Subtract(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Subtracts one Quaternion from another.
+            </summary>
+            <param name="value1">The first source Quaternion.</param>
+            <param name="value2">The second Quaternion, to be subtracted from the first.</param>
+            <returns>The result of the subtraction.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Multiply(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Multiplies two Quaternions together.
+            </summary>
+            <param name="value1">The Quaternion on the left side of the multiplication.</param>
+            <param name="value2">The Quaternion on the right side of the multiplication.</param>
+            <returns>The result of the multiplication.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Multiply(LiteEntitySystem.FixedMath.Quaternion,System.Single)">
+            <summary>
+            Multiplies a Quaternion by a scalar value.
+            </summary>
+            <param name="value1">The source Quaternion.</param>
+            <param name="value2">The scalar value.</param>
+            <returns>The result of the multiplication.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Divide(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Divides a Quaternion by another Quaternion.
+            </summary>
+            <param name="value1">The source Quaternion.</param>
+            <param name="value2">The divisor.</param>
+            <returns>The result of the division.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_UnaryNegation(LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Flips the sign of each component of the quaternion.
+            </summary>
+            <param name="value">The source Quaternion.</param>
+            <returns>The negated Quaternion.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_Addition(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Adds two Quaternions element-by-element.
+            </summary>
+            <param name="value1">The first source Quaternion.</param>
+            <param name="value2">The second source Quaternion.</param>
+            <returns>The result of adding the Quaternions.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_Subtraction(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Subtracts one Quaternion from another.
+            </summary>
+            <param name="value1">The first source Quaternion.</param>
+            <param name="value2">The second Quaternion, to be subtracted from the first.</param>
+            <returns>The result of the subtraction.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_Multiply(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Multiplies two Quaternions together.
+            </summary>
+            <param name="value1">The Quaternion on the left side of the multiplication.</param>
+            <param name="value2">The Quaternion on the right side of the multiplication.</param>
+            <returns>The result of the multiplication.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_Multiply(LiteEntitySystem.FixedMath.Quaternion,System.Single)">
+            <summary>
+            Multiplies a Quaternion by a scalar value.
+            </summary>
+            <param name="value1">The source Quaternion.</param>
+            <param name="value2">The scalar value.</param>
+            <returns>The result of the multiplication.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_Division(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Divides a Quaternion by another Quaternion.
+            </summary>
+            <param name="value1">The source Quaternion.</param>
+            <param name="value2">The divisor.</param>
+            <returns>The result of the division.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_Equality(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Returns a boolean indicating whether the two given Quaternions are equal.
+            </summary>
+            <param name="value1">The first Quaternion to compare.</param>
+            <param name="value2">The second Quaternion to compare.</param>
+            <returns>True if the Quaternions are equal; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.op_Inequality(LiteEntitySystem.FixedMath.Quaternion,LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Returns a boolean indicating whether the two given Quaternions are not equal.
+            </summary>
+            <param name="value1">The first Quaternion to compare.</param>
+            <param name="value2">The second Quaternion to compare.</param>
+            <returns>True if the Quaternions are not equal; False if they are equal.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Equals(LiteEntitySystem.FixedMath.Quaternion)">
+            <summary>
+            Returns a boolean indicating whether the given Quaternion is equal to this Quaternion instance.
+            </summary>
+            <param name="other">The Quaternion to compare this instance to.</param>
+            <returns>True if the other Quaternion is equal to this instance; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.Equals(System.Object)">
+            <summary>
+            Returns a boolean indicating whether the given Object is equal to this Quaternion instance.
+            </summary>
+            <param name="obj">The Object to compare against.</param>
+            <returns>True if the Object is equal to this Quaternion; False otherwise.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.ToString">
+            <summary>
+            Returns a String representing this Quaternion instance.
+            </summary>
+            <returns>The string representation.</returns>
+        </member>
+        <member name="M:LiteEntitySystem.FixedMath.Quaternion.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
         <member name="T:LiteEntitySystem.HumanControllerLogic`1">
             <summary>
             Base class for human Controller entities
@@ -1065,13 +1834,13 @@
             returns the number of tokens in the proximity database
             </summary>
         </member>
-        <member name="M:SharpSteer2.Database.ITokenForProximityDatabase`1.UpdateForNewPosition(System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Database.ITokenForProximityDatabase`1.UpdateForNewPosition(HeroBattle.FixedMath.Vector3f)">
             <summary>
             the client object calls this each time its position changes
             </summary>
             <param name="position"></param>
         </member>
-        <member name="M:SharpSteer2.Database.ITokenForProximityDatabase`1.FindNeighbors(System.Numerics.Vector3,System.Single,System.Collections.Generic.List{`0})">
+        <member name="M:SharpSteer2.Database.ITokenForProximityDatabase`1.FindNeighbors(HeroBattle.FixedMath.Vector3f,System.Single,System.Collections.Generic.List{`0})">
             <summary>
             find all neighbors within the given sphere (as center and radius)
             </summary>
@@ -1094,7 +1863,7 @@
             structure of a client obj, or could be allocated separately.
             </summary>
         </member>
-        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.TraverseBinClientObjectList(SharpSteer2.Database.LocalityQueryDatabase.ClientProxy,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.TraverseBinClientObjectList(SharpSteer2.Database.LocalityQueryDatabase.ClientProxy,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Given a bin's list of client proxies, traverse the list and invoke
             the given lqCallBackFunction on each obj that falls within the
@@ -1106,7 +1875,7 @@
             <param name="state"></param>
             <param name="position"></param>
         </member>
-        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.MapOverAllObjectsInLocalityClipped(System.Numerics.Vector3,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.MapOverAllObjectsInLocalityClipped(HeroBattle.FixedMath.Vector3f,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             This subroutine of lqMapOverAllObjectsInLocality efficiently
             traverses of subset of bins specified by max and min bin
@@ -1123,7 +1892,7 @@
             <param name="maxBinY"></param>
             <param name="maxBinZ"></param>
         </member>
-        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.MapOverAllOutsideObjects(System.Numerics.Vector3,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object)">
+        <member name="M:SharpSteer2.Database.LocalityQueryDatabase.MapOverAllOutsideObjects(HeroBattle.FixedMath.Vector3f,System.Single,SharpSteer2.Database.LocalityQueryDatabase.LQCallBackFunction,System.Object)">
             <summary>
             If the query region (sphere) extends outside of the "super-brick"
             we need to check for objects in the catch-all "other" bin which
@@ -1144,7 +1913,7 @@
             "token" to represent objects stored in the database
             </summary>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalizeDirection(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalizeDirection(SharpSteer2.ILocalSpaceBasis,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Transforms a direction in global space to its equivalent in local space.
             </summary>
@@ -1152,7 +1921,7 @@
             <param name="globalDirection">The global space direction to transform.</param>
             <returns>The global space direction transformed to local space .</returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalizePosition(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalizePosition(SharpSteer2.ILocalSpaceBasis,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Transforms a point in global space to its equivalent in local space.
             </summary>
@@ -1160,7 +1929,7 @@
             <param name="globalPosition">The global space position to transform.</param>
             <returns>The global space position transformed to local space.</returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.GlobalizePosition(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.GlobalizePosition(SharpSteer2.ILocalSpaceBasis,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Transforms a point in local space to its equivalent in global space.
             </summary>
@@ -1168,7 +1937,7 @@
             <param name="localPosition">The local space position to tranform.</param>
             <returns>The local space position transformed to global space.</returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.GlobalizeDirection(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.GlobalizeDirection(SharpSteer2.ILocalSpaceBasis,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Transforms a direction in local space to its equivalent in global space.
             </summary>
@@ -1176,7 +1945,7 @@
             <param name="localDirection">The local space direction to tranform.</param>
             <returns>The local space direction transformed to global space</returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalRotateForwardToSide(SharpSteer2.ILocalSpaceBasis,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.LocalRotateForwardToSide(SharpSteer2.ILocalSpaceBasis,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Rotates, in the canonical direction, a vector pointing in the
             "forward" (+Z) direction to the "side" (+/-X) direction as implied
@@ -1186,7 +1955,7 @@
             <param name="value">The local space vector.</param>
             <returns>The rotated vector.</returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.SetUnitSideFromForwardAndUp(System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.SetUnitSideFromForwardAndUp(HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@)">
             <summary>
             set "side" basis vector to normalized cross product of forward and up
             </summary>
@@ -1194,7 +1963,7 @@
             <param name="side"></param>
             <param name="up"></param>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasisUF(System.Numerics.Vector3,System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasisUF(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@)">
             <summary>
             regenerate the orthonormal basis vectors given a new forward
             (which is expected to have unit length)
@@ -1204,7 +1973,7 @@
             <param name="side"></param>
             <param name="up"></param>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(System.Numerics.Vector3,System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@)">
             <summary>
             for when the new forward is NOT know to have unit length
             </summary>
@@ -1213,7 +1982,7 @@
             <param name="side"></param>
             <param name="up"></param>
         </member>
-        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+        <member name="M:SharpSteer2.Helpers.LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@,HeroBattle.FixedMath.Vector3f@)">
             <summary>
             for supplying both a new forward and and new up
             </summary>
@@ -1223,7 +1992,7 @@
             <param name="side"></param>
             <param name="up"></param>
         </member>
-        <member name="M:SharpSteer2.Helpers.PathwayHelpers.IsInsidePath(SharpSteer2.Pathway.IPathway,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.PathwayHelpers.IsInsidePath(SharpSteer2.Pathway.IPathway,HeroBattle.FixedMath.Vector3f)">
             <summary>
             is the given point inside the path tube?
             </summary>
@@ -1231,7 +2000,7 @@
             <param name="point"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.PathwayHelpers.HowFarOutsidePath(SharpSteer2.Pathway.IPathway,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.PathwayHelpers.HowFarOutsidePath(SharpSteer2.Pathway.IPathway,HeroBattle.FixedMath.Vector3f)">
             <summary>
             how far outside path tube is the given point?  (negative is inside)
             </summary>
@@ -1322,7 +2091,7 @@
             <param name="smoothedAccumulator"></param>
             <example>blendIntoAccumulator (dt * 0.4f, currentFPS, smoothedFPS)</example>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.ParallelComponent(System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.ParallelComponent(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
             <summary>
             return component of vector parallel to a unit basis vector
             </summary>
@@ -1330,7 +2099,7 @@
             <param name="unitBasis">A unit length basis vector</param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.PerpendicularComponent(System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.PerpendicularComponent(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
             <summary>
             return component of vector perpendicular to a unit basis vector
             </summary>
@@ -1338,7 +2107,7 @@
             <param name="unitBasis">A unit length basis vector</param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.TruncateLength(System.Numerics.Vector3,System.Single)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.TruncateLength(HeroBattle.FixedMath.Vector3f,System.Single)">
             <summary>
             clamps the length of a given vector to maxLength.  If the vector is
             shorter its value is returned unaltered, if the vector is longer
@@ -1349,7 +2118,7 @@
             <param name="maxLength"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RotateAboutGlobalY(System.Numerics.Vector3,System.Single)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.RotateAboutGlobalY(HeroBattle.FixedMath.Vector3f,System.Single)">
             <summary>
             rotate this vector about the global Y (up) axis by the given angle
             </summary>
@@ -1357,7 +2126,7 @@
             <param name="radians"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RotateAboutGlobalY(System.Numerics.Vector3,System.Single,System.Single@,System.Single@)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.RotateAboutGlobalY(HeroBattle.FixedMath.Vector3f,System.Single,System.Single@,System.Single@)">
             <summary>
             Rotate this vector about the global Y (up) axis by the given angle
             </summary>
@@ -1367,7 +2136,7 @@
             <param name="cos">Either Cos(radians) or default(float), if default(float) this value will be initialized with Cos(radians)</param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.SphericalWrapAround(System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.SphericalWrapAround(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Single)">
             <summary>
             Wrap a position around so it is always within 1 radius of the sphere (keeps repeating wrapping until position is within sphere)
             </summary>
@@ -1376,7 +2145,7 @@
             <param name="radius"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomVectorOnUnitRadiusXZDisk">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.RandomVectorOnUnitRadiusXZDisk">
             <summary>
             Returns a position randomly distributed on a disk of unit radius
             on the XZ (Y=0) plane, centered at the origin.  Orientation will be
@@ -1384,7 +2153,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomVectorInUnitRadiusSphere">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.RandomVectorInUnitRadiusSphere">
             <summary>
             Returns a position randomly distributed inside a sphere of unit radius
             centered at the origin.  Orientation will be random and length will range
@@ -1392,7 +2161,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomUnitVector">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.RandomUnitVector">
             <summary>
             Returns a position randomly distributed on the surface of a sphere
             of unit radius centered at the origin.  Orientation will be random
@@ -1400,7 +2169,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.RandomUnitVectorOnXZPlane">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.RandomUnitVectorOnXZPlane">
             <summary>
             Returns a position randomly distributed on a circle of unit radius
             on the XZ (Y=0) plane, centered at the origin.  Orientation will be
@@ -1408,7 +2177,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.LimitMaxDeviationAngle(System.Numerics.Vector3,System.Single,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.LimitMaxDeviationAngle(HeroBattle.FixedMath.Vector3f,System.Single,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Clip a vector to be within the given cone
             </summary>
@@ -1417,7 +2186,7 @@
             <param name="basis">The vector along the middle of the cone</param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.LimitMinDeviationAngle(System.Numerics.Vector3,System.Single,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.LimitMinDeviationAngle(HeroBattle.FixedMath.Vector3f,System.Single,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Clip a vector to be outside the given cone
             </summary>
@@ -1426,7 +2195,7 @@
             <param name="basis">The vector along the middle of the cone</param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.LimitDeviationAngleUtility(System.Boolean,System.Numerics.Vector3,System.Single,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.LimitDeviationAngleUtility(System.Boolean,HeroBattle.FixedMath.Vector3f,System.Single,HeroBattle.FixedMath.Vector3f)">
             <summary>
             used by limitMaxDeviationAngle / limitMinDeviationAngle
             </summary>
@@ -1436,7 +2205,7 @@
             <param name="basis"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.DistanceFromLine(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.DistanceFromLine(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Returns the distance between a point and a line.
             </summary>
@@ -1445,7 +2214,7 @@
             <param name="lineUnitTangent">A UNIT vector parallel to the line</param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Helpers.Vector3Helpers.FindPerpendicularIn3d(System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Helpers.Vector3fHelpers.FindPerpendicularIn3d(HeroBattle.FixedMath.Vector3f)">
             <summary>
             Find any arbitrary vector which is perpendicular to the given vector
             </summary>
@@ -1459,7 +2228,7 @@
             of the obstacle.  Avoidance is required when (1) the obstacle
             intersects the this's current path, (2) it is in front of the
             this, and (3) is within minTimeToCollision seconds of travel at the
-            this's current velocity.  Returns a zero vector value (Vector3::zero)
+            this's current velocity.  Returns a zero vector value (Vector3f::zero)
             when no avoidance is required.
             </summary>
             <param name="vehicle"></param>
@@ -1539,7 +2308,7 @@
             Indicates whether annotation is enabled.
             </summary>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.Line(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+        <member name="M:SharpSteer2.IAnnotationService.Line(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Single)">
             <summary>
             Draws an opaque colored line segment between two locations in space.
             </summary>
@@ -1548,7 +2317,7 @@
             <param name="color">The color of the line.</param>
             <param name="opacity"></param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.CircleXZ(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+        <member name="M:SharpSteer2.IAnnotationService.CircleXZ(System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Int32)">
             <summary>
             Draws a circle on the XZ plane.
             </summary>
@@ -1557,7 +2326,7 @@
             <param name="color">The color of the circle.</param>
             <param name="segments">The number of segments to use to draw the circle.</param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.DiskXZ(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+        <member name="M:SharpSteer2.IAnnotationService.DiskXZ(System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Int32)">
             <summary>
             Draws a disk on the XZ plane.
             </summary>
@@ -1566,7 +2335,7 @@
             <param name="color">The color of the disk.</param>
             <param name="segments">The number of segments to use to draw the disk.</param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.Circle3D(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+        <member name="M:SharpSteer2.IAnnotationService.Circle3D(System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Int32)">
             <summary>
             Draws a circle perpendicular to the given axis.
             </summary>
@@ -1576,7 +2345,7 @@
             <param name="color">The color of the circle.</param>
             <param name="segments">The number of segments to use to draw the circle.</param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.Disk3D(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+        <member name="M:SharpSteer2.IAnnotationService.Disk3D(System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Int32)">
             <summary>
             Draws a disk perpendicular to the given axis.
             </summary>
@@ -1586,7 +2355,7 @@
             <param name="color">The color of the disk.</param>
             <param name="segments">The number of segments to use to draw the disk.</param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.CircleOrDiskXZ(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32,System.Boolean)">
+        <member name="M:SharpSteer2.IAnnotationService.CircleOrDiskXZ(System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Int32,System.Boolean)">
             <summary>
             Draws a circle (not filled) or disk (filled) on the XZ plane.
             </summary>
@@ -1596,7 +2365,7 @@
             <param name="segments">The number of segments to use to draw the circle/disk.</param>
             <param name="filled">Flag indicating whether to draw a disk or circle.</param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.CircleOrDisk3D(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32,System.Boolean)">
+        <member name="M:SharpSteer2.IAnnotationService.CircleOrDisk3D(System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Int32,System.Boolean)">
             <summary>
             Draws a circle (not filled) or disk (filled) perpendicular to the given axis.
             </summary>
@@ -1607,7 +2376,7 @@
             <param name="segments">The number of segments to use to draw the circle/disk.</param>
             <param name="filled">Flag indicating whether to draw a disk or circle.</param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.CircleOrDisk(System.Single,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Int32,System.Boolean,System.Boolean)">
+        <member name="M:SharpSteer2.IAnnotationService.CircleOrDisk(System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Int32,System.Boolean,System.Boolean)">
             <summary>
             Draws a circle (not filled) or disk (filled) perpendicular to the given axis.
             </summary>
@@ -1625,7 +2394,7 @@
             </summary>
             <param name="minDistanceToCollision"></param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.PathFollowing(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+        <member name="M:SharpSteer2.IAnnotationService.PathFollowing(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f,System.Single)">
             <summary>
             Called when steerToFollowPath decides steering is required.
             </summary>
@@ -1641,7 +2410,7 @@
             <param name="other"></param>
             <param name="additionalDistance"></param>
         </member>
-        <member name="M:SharpSteer2.IAnnotationService.AvoidNeighbor(SharpSteer2.IVehicle,System.Single,System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.IAnnotationService.AvoidNeighbor(SharpSteer2.IVehicle,System.Single,HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f)">
             <summary>
             Called when steerToAvoidNeighbors decides steering is required.
             </summary>
@@ -1676,7 +2445,7 @@
             A flow field which can be sampled at arbitrary locations
             </summary>
         </member>
-        <member name="M:SharpSteer2.IFlowField.Sample(System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.IFlowField.Sample(HeroBattle.FixedMath.Vector3f)">
             <summary>
             Sample the flow field at the given location
             </summary>
@@ -1817,7 +2586,7 @@
             A path consisting of a series of gates which must be passed through
             </summary>
         </member>
-        <member name="M:SharpSteer2.Pathway.IPathway.MapPointToPath(System.Numerics.Vector3,System.Numerics.Vector3@,System.Single@)">
+        <member name="M:SharpSteer2.Pathway.IPathway.MapPointToPath(HeroBattle.FixedMath.Vector3f,HeroBattle.FixedMath.Vector3f@,System.Single@)">
             <summary>
             Given an arbitrary point ("A"), returns the nearest point ("P") on
             this path.  Also returns, via output arguments, the path tangent at
@@ -1836,7 +2605,7 @@
             <param name="pathDistance"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpSteer2.Pathway.IPathway.MapPointToPathDistance(System.Numerics.Vector3)">
+        <member name="M:SharpSteer2.Pathway.IPathway.MapPointToPathDistance(HeroBattle.FixedMath.Vector3f)">
             <summary>
             Given an arbitrary point, convert it to a distance along the path.
             </summary>
@@ -1851,7 +2620,7 @@
             point and a cylinder along each segment.
             </summary>
         </member>
-        <member name="M:SharpSteer2.Pathway.PolylinePathway.#ctor(System.Collections.Generic.IList{System.Numerics.Vector3},System.Single,System.Boolean)">
+        <member name="M:SharpSteer2.Pathway.PolylinePathway.#ctor(System.Collections.Generic.IList{HeroBattle.FixedMath.Vector3f},System.Single,System.Boolean)">
             <summary>
             construct a PolylinePathway given the number of points (vertices),
             an array of points, and a path radius.
@@ -1865,7 +2634,7 @@
             A pathway made out of triangular segments
             </summary>
         </member>
-        <member name="M:SharpSteer2.SimpleVehicle.AdjustRawSteeringForce(System.Numerics.Vector3,System.Single)">
+        <member name="M:SharpSteer2.SimpleVehicle.AdjustRawSteeringForce(HeroBattle.FixedMath.Vector3f,System.Single)">
             <summary>
             adjust the steering force passed to applySteeringForce.
             allows a specific vehicle class to redefine this adjustment.

@@ -1,18 +1,12 @@
-﻿using FixMath.NET;
-using HeroBattle.FixedMath;
+﻿using HeroBattle.FixedMath;
 using HeroBattleShare;
 using HeroBattleShare.Factory;
 using LiteEntitySystem;
-using SharpSteer2.Database;
 using SharpSteer2;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Reflection;
+using SharpSteer2.Database;
 using SharpSteer2.Helpers;
-using System.Drawing;
 using System;
+using System.Collections.Generic;
 
 namespace HeroBattle
 {
@@ -22,21 +16,12 @@ namespace HeroBattle
 
         private SimpleVehicle vehicle;
         [SyncVarFlags(SyncFlags.Interpolated)]
-        public SyncVar<Vector2f> position;
-        public Vector2f speed;
+        public SyncVar<Vector3f> _position;
+        public Vector3f speed;
         private IBaseMinionView m_View;
         private readonly ITokenForProximityDatabase<IVehicle> _proximityToken;
         public List<BaseMinion> Enemy { get; set; }
         private readonly List<IVehicle> _neighbours = new List<IVehicle>();
-
-        public override float MaxForce
-        {
-            get { return 7; }
-        }
-        public override float MaxSpeed
-        {
-            get { return 15; }
-        }
 
         public const float WORLD_RADIUS = 30;
 
@@ -60,8 +45,8 @@ namespace HeroBattle
             if (IsServer)
             {
                 var randomManager = EntityManager.GetSingleton<RandomManager>();
-                position.Value = new Vector2f(new Fix64(randomManager.GetRandom(-3, 3)), new Fix64(randomManager.GetRandom(-3, 3)));
-                speed = new Vector2f(new Fix64(randomManager.GetRandom(-3, 3)) / new Fix64(100), new Fix64(randomManager.GetRandom(-3, 3)) / new Fix64(100));
+                _position.Value = new Vector3f(randomManager.GetRandom(-3, 3), (randomManager.GetRandom(-3, 3)), 0);
+                speed = new Vector3f((randomManager.GetRandom(-3, 3)) / (100), (randomManager.GetRandom(-3, 3)) / (100), 0);
             }
         }
 
@@ -71,19 +56,19 @@ namespace HeroBattle
 
             if (IsLocal || EntityManager.IsServer)
             {
-                var temp = position.Value + (speed * EntityManager.DeltaTimeF);
-                position.Value = temp;
+                var temp = _position.Value + (speed * EntityManager.DeltaTimeF);
+                _position.Value = temp;
             }
 
             _neighbours.Clear();
-            _proximityToken.FindNeighbors(Position, 50, _neighbours);
+            _proximityToken.FindNeighbors(_position.Value, 50, _neighbours);
             var target = ClosestEnemy(_neighbours);
             {
                 // attack
             }
 
 
-            Vector3 otherPlaneForce = vehicle.SteerToAvoidCloseNeighbors(3, _neighbours);
+            Vector3f otherPlaneForce = vehicle.SteerToAvoidCloseNeighbors(3, _neighbours);
             if (target != null)
                 otherPlaneForce += vehicle.SteerForPursuit(target);
 
@@ -96,20 +81,25 @@ namespace HeroBattle
             //    .Select(m => SteerForEvasion(m, 1))
             //    .Aggregate(Vector3.Zero, (a, b) => a + b);
 
-            vehicle.ApplySteeringForce(otherPlaneForce + boundary + vehicle.SteerForWander(elapsedTime) * 0.1f, elapsedTime);
-
-            _proximityToken.UpdateForNewPosition(Position);
+            vehicle.ApplySteeringForce(otherPlaneForce + boundary + vehicle.SteerForWander(EntityManager.DeltaTimeF) * 0.1f, EntityManager.DeltaTimeF);
+            _position.Value = vehicle.Position;
+            _proximityToken.UpdateForNewPosition(_position);
         }
 
-        private Vector3 HandleBoundary()
+        private IVehicle ClosestEnemy(List<IVehicle> neighbours)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Vector3f HandleBoundary()
         {
             // while inside the sphere do noting
-            if (Position.Length() < WORLD_RADIUS)
-                return Vector3.Zero;
+            if (_position.Value.Length() < WORLD_RADIUS)
+                return Vector3f.Zero;
 
             // steer back when outside
-            Vector3 seek = vehicle.SteerForSeek(Vector3.Zero);
-            Vector3 lateral = Vector3Helpers.PerpendicularComponent(seek, Forward);
+            Vector3f seek = vehicle.SteerForSeek(Vector3f.Zero);
+            Vector3f lateral = Vector3fHelpers.PerpendicularComponent(seek, vehicle.Forward);
             return lateral;
 
         }

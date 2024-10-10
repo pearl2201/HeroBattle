@@ -36,7 +36,7 @@ namespace HeroBattleShare
         public EntityTypesMap<GameEntities> RegisterTypeMap()
         {
             EntityManager.RegisterFieldType<Vector2f>();
-            EntityManager.RegisterFieldType<Fix64>();
+            EntityManager.RegisterFieldType<Vector3f>();
             var typesMap = new EntityTypesMap<GameEntities>()
                  .Register(GameEntities.Player, e => new BaseCharacter(e))
                  .Register(GameEntities.PlayerController, e => new BaseCharacterController(e))

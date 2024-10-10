@@ -42,7 +42,7 @@ namespace HeroBattle
         protected override void ReadInput(in PlayerInputPacket input)
         {
 
-            if (temp.x > Fix64.Zero)
+            if (temp.x > 0)
             {
                 input.Keys = input.Keys | MovementKeys.Right;
             }

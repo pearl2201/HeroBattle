@@ -10,6 +10,7 @@
 
 using System.Numerics;
 using HeroBattle.FixedMath;
+using LiteEntitySystem.FixedMath;
 using SharpSteer2.Helpers;
 
 namespace SharpSteer2
@@ -22,7 +23,7 @@ namespace SharpSteer2
     public class LocalSpaceBasis
         : ILocalSpaceBasis
     {
-        protected Vector3f SideField;
+        public Vector3f SideField;
 
         /// <summary>
         /// side-pointing unit basis vector
@@ -33,7 +34,7 @@ namespace SharpSteer2
             set { SideField = value; }
         }
 
-        protected Vector3f UpField;
+        public Vector3f UpField;
 
         /// <summary>
         /// upward-pointing unit basis vector
@@ -44,7 +45,7 @@ namespace SharpSteer2
             set { UpField = value; }
         }
 
-        protected Vector3f ForwardField;
+        public Vector3f ForwardField;
 
         /// <summary>
         /// forward-pointing unit basis vector
@@ -55,7 +56,7 @@ namespace SharpSteer2
             set { ForwardField = value; }
         }
 
-        protected Vector3f PositionField;
+        public Vector3f PositionField;
 
         /// <summary>
         /// origin of local space
@@ -86,7 +87,7 @@ namespace SharpSteer2
 			SetUnitSideFromForwardAndUp();
 		}
 
-        public LocalSpace(Matrix4x4 transformation)
+        public LocalSpace(Matrix4x4f transformation)
         {
             LocalSpaceBasisHelpers.FromMatrix(transformation, out ForwardField, out SideField, out UpField, out PositionField);
         }
@@ -116,19 +117,19 @@ namespace SharpSteer2
 	    // ------------------------------------------------------------------------
 		// regenerate the orthonormal basis vectors given a new forward
 		//(which is expected to have unit length)
-        public void RegenerateOrthonormalBasisUF(Vector3 newUnitForward)
+        public void RegenerateOrthonormalBasisUF(Vector3f newUnitForward)
         {
             LocalSpaceBasisHelpers.RegenerateOrthonormalBasisUF(newUnitForward, out ForwardField, out SideField, ref UpField);
         }
 
 		// for when the new forward is NOT know to have unit length
-        public void RegenerateOrthonormalBasis(Vector3 newForward)
+        public void RegenerateOrthonormalBasis(Vector3f newForward)
         {
             LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(newForward, out ForwardField, out SideField, ref UpField);
         }
 
 		// for supplying both a new forward and and new up
-        public void RegenerateOrthonormalBasis(Vector3 newForward, Vector3 newUp)
+        public void RegenerateOrthonormalBasis(Vector3f newForward, Vector3f newUp)
         {
             LocalSpaceBasisHelpers.RegenerateOrthonormalBasis(newForward, newUp, out ForwardField, out SideField, out UpField);
         }

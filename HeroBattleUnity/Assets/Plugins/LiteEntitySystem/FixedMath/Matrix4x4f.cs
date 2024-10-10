@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace LiteEntitySystem.FixedMath
 {
-    public class Matrix4x4f : IEquatable<Matrix4x4f>
+    public struct Matrix4x4f : IEquatable<Matrix4x4f>
     {
         #region Public Fields
         /// <summary>
@@ -114,7 +114,7 @@ namespace LiteEntitySystem.FixedMath
         {
             get
             {
-                return new Vector3ff(M41, M42, M43);
+                return new Vector3f(M41, M42, M43);
             }
             set
             {
@@ -153,30 +153,7 @@ namespace LiteEntitySystem.FixedMath
             this.M44 = m44;
         }
 
-        /// <summary>
-        /// Constructs a Matrix4x4f from the given Matrix3x2.
-        /// </summary>
-        /// <param name="value">The source Matrix3x2.</param>
-        public Matrix4x4f(Matrix3x2 value)
-        {
-            M11 = value.M11;
-            M12 = value.M12;
-            M13 = 0f;
-            M14 = 0f;
-            M21 = value.M21;
-            M22 = value.M22;
-            M23 = 0f;
-            M24 = 0f;
-            M31 = 0f;
-            M32 = 0f;
-            M33 = 1f;
-            M34 = 0f;
-            M41 = value.M31;
-            M42 = value.M32;
-            M43 = 0f;
-            M44 = 1f;
-        }
-
+     
         /// <summary>
         /// Creates a spherical billboard that rotates around a specified object position.
         /// </summary>
@@ -1160,89 +1137,7 @@ namespace LiteEntitySystem.FixedMath
             return Matrix4x4f.CreateFromQuaternion(q);
         }
 
-        /// <summary>
-        /// Creates a Matrix that flattens geometry into a specified Plane as if casting a shadow from a specified light source.
-        /// </summary>
-        /// <param name="lightDirection">The direction from which the light that will cast the shadow is coming.</param>
-        /// <param name="plane">The Plane onto which the new matrix should flatten geometry so as to cast a shadow.</param>
-        /// <returns>A new Matrix that can be used to flatten geometry onto the specified plane from the specified direction.</returns>
-        public static Matrix4x4f CreateShadow(Vector3f lightDirection, Plane plane)
-        {
-            Plane p = Plane.Normalize(plane);
-
-            float dot = p.Normal.X * lightDirection.X + p.Normal.Y * lightDirection.Y + p.Normal.Z * lightDirection.Z;
-            float a = -p.Normal.X;
-            float b = -p.Normal.Y;
-            float c = -p.Normal.Z;
-            float d = -p.D;
-
-            Matrix4x4f result = default(Matrix4x4f);
-
-            result.M11 = a * lightDirection.X + dot;
-            result.M21 = b * lightDirection.X;
-            result.M31 = c * lightDirection.X;
-            result.M41 = d * lightDirection.X;
-
-            result.M12 = a * lightDirection.Y;
-            result.M22 = b * lightDirection.Y + dot;
-            result.M32 = c * lightDirection.Y;
-            result.M42 = d * lightDirection.Y;
-
-            result.M13 = a * lightDirection.Z;
-            result.M23 = b * lightDirection.Z;
-            result.M33 = c * lightDirection.Z + dot;
-            result.M43 = d * lightDirection.Z;
-
-            result.M14 = 0.0f;
-            result.M24 = 0.0f;
-            result.M34 = 0.0f;
-            result.M44 = dot;
-
-            return result;
-        }
-
-        /// <summary>
-        /// Creates a Matrix that reflects the coordinate system about a specified Plane.
-        /// </summary>
-        /// <param name="value">The Plane about which to create a reflection.</param>
-        /// <returns>A new matrix expressing the reflection.</returns>
-        public static Matrix4x4f CreateReflection(Plane value)
-        {
-            value = Plane.Normalize(value);
-
-            float a = value.Normal.X;
-            float b = value.Normal.Y;
-            float c = value.Normal.Z;
-
-            float fa = -2.0f * a;
-            float fb = -2.0f * b;
-            float fc = -2.0f * c;
-
-            Matrix4x4f result = default(Matrix4x4f);
-
-            result.M11 = fa * a + 1.0f;
-            result.M12 = fb * a;
-            result.M13 = fc * a;
-            result.M14 = 0.0f;
-
-            result.M21 = fa * b;
-            result.M22 = fb * b + 1.0f;
-            result.M23 = fc * b;
-            result.M24 = 0.0f;
-
-            result.M31 = fa * c;
-            result.M32 = fb * c;
-            result.M33 = fc * c + 1.0f;
-            result.M34 = 0.0f;
-
-            result.M41 = fa * value.D;
-            result.M42 = fb * value.D;
-            result.M43 = fc * value.D;
-            result.M44 = 1.0f;
-
-            return result;
-        }
-
+      
         /// <summary>
         /// Calculates the determinant of the matrix.
         /// </summary>
@@ -2002,7 +1897,7 @@ namespace LiteEntitySystem.FixedMath
         /// <returns>The resulting matrix.</returns>
         public static Matrix4x4f operator +(Matrix4x4f value1, Matrix4x4f value2)
         {
-            Matrix4x4f m;
+            Matrix4x4f m = default(Matrix4x4f);
 
             m.M11 = value1.M11 + value2.M11;
             m.M12 = value1.M12 + value2.M12;
@@ -2032,7 +1927,7 @@ namespace LiteEntitySystem.FixedMath
         /// <returns>The result of the subtraction.</returns>
         public static Matrix4x4f operator -(Matrix4x4f value1, Matrix4x4f value2)
         {
-            Matrix4x4f m;
+            Matrix4x4f m = default(Matrix4x4f);
 
             m.M11 = value1.M11 - value2.M11;
             m.M12 = value1.M12 - value2.M12;
@@ -2062,7 +1957,7 @@ namespace LiteEntitySystem.FixedMath
         /// <returns>The result of the multiplication.</returns>
         public static Matrix4x4f operator *(Matrix4x4f value1, Matrix4x4f value2)
         {
-            Matrix4x4f m;
+            Matrix4x4f m = default(Matrix4x4f);
 
             // First row
             m.M11 = value1.M11 * value2.M11 + value1.M12 * value2.M21 + value1.M13 * value2.M31 + value1.M14 * value2.M41;
@@ -2099,7 +1994,7 @@ namespace LiteEntitySystem.FixedMath
         /// <returns>The scaled matrix.</returns>
         public static Matrix4x4f operator *(Matrix4x4f value1, float value2)
         {
-            Matrix4x4f m;
+            Matrix4x4f m = default(Matrix4x4f);
 
             m.M11 = value1.M11 * value2;
             m.M12 = value1.M12 * value2;
@@ -2204,7 +2099,5 @@ namespace LiteEntitySystem.FixedMath
                    M31.GetHashCode() + M32.GetHashCode() + M33.GetHashCode() + M34.GetHashCode() +
                    M41.GetHashCode() + M42.GetHashCode() + M43.GetHashCode() + M44.GetHashCode();
         }
-    }
-    {
     }
 }

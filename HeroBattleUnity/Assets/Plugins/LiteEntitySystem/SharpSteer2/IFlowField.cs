@@ -13,6 +13,6 @@ namespace SharpSteer2
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        Vector3f Sample(Vector3 location);
+        Vector3f Sample(Vector3f location);
     }
 }

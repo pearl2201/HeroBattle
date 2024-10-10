@@ -1,4 +1,5 @@
 ﻿using HeroBattle.FixedMath;
+using LiteEntitySystem.FixedMath;
 using System.Numerics;
 
 namespace SharpSteer2.Helpers
@@ -136,14 +137,14 @@ namespace SharpSteer2.Helpers
             RegenerateOrthonormalBasis(Vector3f.Normalize(newForward), out forward, out side, ref up);
         }
 
-        public static Matrix4x4 ToMatrix(this ILocalSpaceBasis basis)
+        public static Matrix4x4f ToMatrix(this ILocalSpaceBasis basis)
         {
             return ToMatrix(basis.Forward, basis.Side, basis.Up, basis.Position);
         }
 
-        public static Matrix4x4 ToMatrix(Vector3f forward, Vector3f side, Vector3f up, Vector3f position)
+        public static Matrix4x4f ToMatrix(Vector3f forward, Vector3f side, Vector3f up, Vector3f position)
         {
-            Matrix4x4 m = Matrix4x4.Identity;
+            Matrix4x4f m = Matrix4x4f.Identity;
             m.Translation = position;
             MatrixHelpers.Right(ref m, ref side);
             MatrixHelpers.Up(ref m, ref up);
@@ -152,7 +153,7 @@ namespace SharpSteer2.Helpers
             return m;
         }
 
-        public static void FromMatrix(Matrix4x4 transformation, out Vector3f forward, out Vector3f side, out Vector3f up, out Vector3f position)
+        public static void FromMatrix(Matrix4x4f transformation, out Vector3f forward, out Vector3f side, out Vector3f up, out Vector3f position)
         {
             position = transformation.Translation;
             side = MatrixHelpers.Right(ref transformation);

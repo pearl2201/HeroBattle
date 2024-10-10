@@ -8,6 +8,7 @@
 // you should have received as part of this distribution. The terms
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
+using HeroBattle.FixedMath;
 using System.Numerics;
 
 namespace SharpSteer2.Helpers
@@ -123,9 +124,9 @@ namespace SharpSteer2.Helpers
             smoothedAccumulator = Lerp(smoothedAccumulator, newValue, Clamp(smoothRate, 0, 1));
 		}
 
-		public static void BlendIntoAccumulator(float smoothRate, Vector3 newValue, ref Vector3 smoothedAccumulator)
+		public static void BlendIntoAccumulator(float smoothRate, Vector3f newValue, ref Vector3f smoothedAccumulator)
 		{
-            smoothedAccumulator = Vector3.Lerp(smoothedAccumulator, newValue, Clamp(smoothRate, 0, 1));
+            smoothedAccumulator = Vector3f.Lerp(smoothedAccumulator, newValue, Clamp(smoothRate, 0, 1));
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿using HeroBattle.FixedMath;
-using System.Numerics;
+using LiteEntitySystem.FixedMath;
 using System.Runtime.CompilerServices;
 
 namespace SharpSteer2.Helpers
@@ -7,7 +7,7 @@ namespace SharpSteer2.Helpers
     public static class MatrixHelpers
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Right(ref Matrix4x4 m, ref Vector3f v)
+        public static void Right(ref Matrix4x4f m, ref Vector3f v)
         {
             m.M11 = v.X;
             m.M12 = v.Y;
@@ -15,7 +15,7 @@ namespace SharpSteer2.Helpers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3f Right(ref Matrix4x4 m)
+        public static Vector3f Right(ref Matrix4x4f m)
         {
             return new Vector3f {
                 X = m.M11,
@@ -25,7 +25,7 @@ namespace SharpSteer2.Helpers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Up(ref Matrix4x4 m, ref Vector3f v)
+        public static void Up(ref Matrix4x4f m, ref Vector3f v)
         {
             m.M21 = v.X;
             m.M22 = v.Y;
@@ -33,7 +33,7 @@ namespace SharpSteer2.Helpers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3f Up(ref Matrix4x4 m)
+        public static Vector3f Up(ref Matrix4x4f m)
         {
             return new Vector3f {
                 X = m.M21,
@@ -43,7 +43,7 @@ namespace SharpSteer2.Helpers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Backward(ref Matrix4x4 m, ref Vector3f v)
+        public static void Backward(ref Matrix4x4f m, ref Vector3f v)
         {
             m.M31 = v.X;
             m.M32 = v.Y;
@@ -51,7 +51,7 @@ namespace SharpSteer2.Helpers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3f Backward(ref Matrix4x4 m)
+        public static Vector3f Backward(ref Matrix4x4f m)
         {
             return new Vector3f {
                 X = m.M31,

@@ -120,12 +120,12 @@ namespace LiteEntitySystem
         /// <summary>
         /// Fixed delta time
         /// </summary>
-        public readonly Fix64 DeltaTime;
+        public readonly float DeltaTime;
 
         /// <summary>
         /// Fixed delta time (float for less precision)
         /// </summary>
-        public readonly Fix64 DeltaTimeF;
+        public readonly float DeltaTimeF;
         
         /// <summary>
         /// Size of history (in ticks) for lag compensation. Tune for your game fps 
@@ -248,7 +248,7 @@ namespace LiteEntitySystem
             IsServer = Mode == NetworkMode.Server;
             IsClient = Mode == NetworkMode.Client;
             FramesPerSecond = framesPerSecond;
-            DeltaTime = Fix64.One / new Fix64(framesPerSecond);
+            DeltaTime = 1 / framesPerSecond;
             DeltaTimeF = DeltaTime;
             _stopwatchFrequency = 1.0 / Stopwatch.Frequency;
             _deltaTimeTicks = (long)((float)DeltaTime * Stopwatch.Frequency);

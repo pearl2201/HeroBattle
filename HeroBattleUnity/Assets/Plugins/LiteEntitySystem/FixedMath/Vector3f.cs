@@ -38,6 +38,11 @@ namespace HeroBattle.FixedMath
             return new Vector3f(a.x * b, a.y * b, a.z * b);
         }
 
+        public static Vector3f operator *(float b, Vector3f a)
+        {
+            return new Vector3f(a.x * b, a.y * b, a.z * b);
+        }
+
         public static Vector3f operator -(Vector3f a)
         {
             return new Vector3f(-a.x, -a.y, -a.z);
@@ -80,6 +85,10 @@ namespace HeroBattle.FixedMath
         public static Vector3f Zero = new Vector3f(0, 0, 0);
         public static Vector3f One = new Vector3f(1, 1, 1);
 
+        public static Vector3f Multiply(Vector3f a, float v)
+        {
+            return a * v;
+        }
         public static Vector3f Normalize(Vector3f v)
         {
             return v / v.Length();

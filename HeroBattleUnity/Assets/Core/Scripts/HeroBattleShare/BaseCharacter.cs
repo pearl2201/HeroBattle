@@ -1,6 +1,7 @@
 ﻿using HeroBattle.FixedMath;
 using LiteEntitySystem;
 using LiteEntitySystem.Extensions;
+using SharpSteer2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,7 @@ namespace HeroBattle
         private SyncVar<byte> _health;
         public SyncVar<Vector2f> speed;
 
+        private SimpleVehicle _vehicle;
         public byte Health => _health;
         public Vector2f Position => _position.Value;
         public float Rotation => _rotation.Value;
