@@ -54,7 +54,7 @@ namespace HeroBattleServer
             for (int i = 0; i < 10; i++)
             {
                 int botNum = i;
-                var botPlayer = _serverEntityManager.AddEntity<BaseCharacter>(e =>
+                var botPlayer = _serverEntityManager.AddEntity<BasePlayer>(e =>
                 {
 
                 });
@@ -79,12 +79,12 @@ namespace HeroBattleServer
             _logger.Log("[S] Join packet received: " + joinPacket.UserName);
 
             var serverPlayer = _serverEntityManager.AddPlayer(new LiteNetLibNetPeer(peer, true));
-            var player = _serverEntityManager.AddEntity<BaseCharacter>(e =>
+            var player = _serverEntityManager.AddEntity<BasePlayer>(e =>
             {
                 //e.Spawn(new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f)));
                 //e.Name.Value = joinPacket.UserName;
             });
-            _serverEntityManager.AddController<BaseCharacterController>(serverPlayer, player);
+            _serverEntityManager.AddController<BasePlayerController>(serverPlayer, player);
         }
 
 

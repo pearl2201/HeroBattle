@@ -17,6 +17,8 @@ namespace HeroBattleShare
         public IGameFactorySystem GameFactorySystem { get; set; }
 
         public IGameInputSystem GameInputSystem { get; set; }
+
+        public ICharacterRepositiory CharacterRepositiory { get; set; }
         public static AppServices Instance
         {
             get
@@ -38,8 +40,8 @@ namespace HeroBattleShare
             EntityManager.RegisterFieldType<Vector2f>();
             EntityManager.RegisterFieldType<Vector3f>();
             var typesMap = new EntityTypesMap<GameEntities>()
-                 .Register(GameEntities.Player, e => new BaseCharacter(e))
-                 .Register(GameEntities.PlayerController, e => new BaseCharacterController(e))
+                 .Register(GameEntities.Player, e => new BasePlayer(e))
+                 .Register(GameEntities.PlayerController, e => new BasePlayerController(e))
                  .Register(GameEntities.Minion, e => new BaseMinion(e))
                  .Register(GameEntities.BotController, e => new ServerBotController(e))
                  .Register(GameEntities.Random, e => new RandomManager(e))

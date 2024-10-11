@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HeroBattle
 {
-    public class ServerBotController : AiControllerLogic<BaseCharacter>
+    public class ServerBotController : AiControllerLogic<BasePlayer>
     {
         public ServerBotController(EntityParams entityParams) : base(entityParams)
         {

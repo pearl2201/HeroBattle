@@ -38,16 +38,19 @@ namespace HeroBattle
 
         public struct PlayerInputPacket
         {
-            public MovementKeys Keys;
-            public float Rotation;
+            public int x;
+            public int y;
+            public MovementKeys dir;
         }
 
-        public struct AttackPacket{
+        public struct AttackPacket
+        {
 
         }
 
-        public struct HitPacket{
-            
+        public struct HitPacket
+        {
+
         }
     }
 }

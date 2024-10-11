@@ -8,11 +8,11 @@ using static HeroBattle.GamePackets;
 
 namespace HeroBattle
 {
-    public class BaseCharacterController : HumanControllerLogic<PlayerInputPacket, BaseCharacter>
+    public class BasePlayerController : HumanControllerLogic<PlayerInputPacket, BasePlayer>
     {
         private PlayerInputPacket _nextCommand;
 
-        public BaseCharacterController(EntityParams entityParams) : base(entityParams)
+        public BasePlayerController(EntityParams entityParams) : base(entityParams)
         {
         }
 

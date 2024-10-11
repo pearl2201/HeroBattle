@@ -2,14 +2,11 @@
 using LiteEntitySystem;
 using LiteEntitySystem.Extensions;
 using SharpSteer2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using static HeroBattle.GamePackets;
 
 namespace HeroBattle
 {
-    public class BaseCharacter : PawnLogic
+    public class BasePlayer : PawnLogic
     {
         [SyncVarFlags(SyncFlags.Interpolated)]
         public SyncVar<Vector2f> _position;
@@ -27,7 +24,7 @@ namespace HeroBattle
 
         private static RemoteCall<AttackPacket> _attackRemoteCall;
         private static RemoteCall<HitPacket> _hitRemoteCall;
-        public BaseCharacter(EntityParams entityParams) : base(entityParams)
+        public BasePlayer(EntityParams entityParams) : base(entityParams)
         {
         }
 
@@ -58,8 +55,7 @@ namespace HeroBattle
 
         public void SetInput(float rotation, Vector2f velocity)
         {
-            _targetRotation = rotation;
-            _velocity = velocity.normalized * _speed;
+
         }
 
         protected override void Update()

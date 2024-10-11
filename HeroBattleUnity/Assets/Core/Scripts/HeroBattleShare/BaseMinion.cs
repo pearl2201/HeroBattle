@@ -1,25 +1,45 @@
 ﻿using HeroBattle.FixedMath;
 using HeroBattleShare;
+using HeroBattleShare.Characters;
 using HeroBattleShare.Factory;
 using LiteEntitySystem;
 using SharpSteer2;
-using SharpSteer2.Database;
-using SharpSteer2.Helpers;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HeroBattle
 {
     [EntityFlags(EntityFlags.Updateable)]
     public class BaseMinion : EntityLogic // SimpleVehicle 
     {
-
-        private SimpleVehicle vehicle;
+        public BaseCharacterSkillDefinition skillDefinition;
+        public BaseCharacterStatDefinition statDefinition;
+        public SyncVar<int> _minionId;
+        public SyncVar<float> _hp;
+        public SyncVar<float> _mana;
         [SyncVarFlags(SyncFlags.Interpolated)]
         public SyncVar<Vector3f> _position;
+        public float Hp
+        {
+            get { return _hp.Value; }
+            set { _hp.Value = value; }
+        }
+
+        public float Mana
+        {
+            get { return _mana.Value; }
+            set { _mana.Value = value; }
+        }
+
+        public Vector3f Position
+        {
+            get { return _position.Value; }
+            set { _position.Value = value; }
+        }
+
+
         public Vector3f speed;
         private IBaseMinionView m_View;
-        private readonly ITokenForProximityDatabase<IVehicle> _proximityToken;
         public List<BaseMinion> Enemy { get; set; }
         private readonly List<IVehicle> _neighbours = new List<IVehicle>();
 
@@ -50,66 +70,100 @@ namespace HeroBattle
             }
         }
 
+        public void Init(int id, int level)
+        {
+            this._minionId.Value = id;
+            var characterDefinition = AppServices.Instance.CharacterRepositiory.GetCharacterDefinition(id);
+            skillDefinition = characterDefinition.SkillDefinitions.FirstOrDefault(x => x.level == level);   
+            statDefinition = characterDefinition.StatDefinitions.FirstOrDefault(y => y.level == level);
+        }
+
         protected override void Update()
         {
             base.Update();
 
             if (IsLocal || EntityManager.IsServer)
             {
-                var temp = _position.Value + (speed * EntityManager.DeltaTimeF);
-                _position.Value = temp;
+                if (_mana == skillDefinition.mana)
+                {
+
+                }
             }
 
-            _neighbours.Clear();
-            _proximityToken.FindNeighbors(_position.Value, 50, _neighbours);
-            var target = ClosestEnemy(_neighbours);
+
+        }
+
+        public BaseMinion GetClosestEnemy(BaseMinion minion, float attackRange)
+        {
+            BaseMinion enemy = null;
+            float minRange = attackRange;
+            float tempRanage = 0;
+            var minions = minion.EntityManager.GetEntities<BaseMinion>();
+            foreach (var m in minions)
             {
-                // attack
+                tempRanage = Vector3f.Distance(minion.Position, m.Position);
+                if (tempRanage < minRange)
+                {
+                    minRange = tempRanage;
+                    enemy = m;
+                }
             }
 
-
-            Vector3f otherPlaneForce = vehicle.SteerToAvoidCloseNeighbors(3, _neighbours);
-            if (target != null)
-                otherPlaneForce += vehicle.SteerForPursuit(target);
-
-            var boundary = HandleBoundary();
-
-            //var evasion = _neighbours
-            //    .Where(v => v is Missile)
-            //    .Cast<Missile>()
-            //    .Where(m => m.Target == this)
-            //    .Select(m => SteerForEvasion(m, 1))
-            //    .Aggregate(Vector3.Zero, (a, b) => a + b);
-
-            vehicle.ApplySteeringForce(otherPlaneForce + boundary + vehicle.SteerForWander(EntityManager.DeltaTimeF) * 0.1f, EntityManager.DeltaTimeF);
-            _position.Value = vehicle.Position;
-            _proximityToken.UpdateForNewPosition(_position);
+            return enemy;
         }
 
-        private IVehicle ClosestEnemy(List<IVehicle> neighbours)
+
+        public void Attack()
         {
-            throw new NotImplementedException();
+
         }
 
-        private Vector3f HandleBoundary()
+        public void Cast()
         {
-            // while inside the sphere do noting
-            if (_position.Value.Length() < WORLD_RADIUS)
-                return Vector3f.Zero;
-
-            // steer back when outside
-            Vector3f seek = vehicle.SteerForSeek(Vector3f.Zero);
-            Vector3f lateral = Vector3fHelpers.PerpendicularComponent(seek, vehicle.Forward);
-            return lateral;
 
         }
 
-        protected override void VisualUpdate()
+        public void Move()
         {
-#if UNITY
-
-#endif
+            var temp = _position.Value + (speed * EntityManager.DeltaTimeF);
+            _position.Value = temp;
         }
+
+        public void OnPhysicalDamage()
+        {
+
+        }
+
+        public void OnMagicalDamage()
+        {
+
+        }
+
+
+        public void OnHealth()
+        {
+
+        }
+
+        public void OnRaiseSp()
+        {
+
+        }
+
+        public void OnFreeze()
+        {
+
+        }
+
+        public void OnPoison()
+        {
+
+        }
+        public void Death()
+        {
+
+        }
+
 
     }
 }
