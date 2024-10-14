@@ -28,36 +28,36 @@ namespace HeroBattle
             if (ControlledEntity == null)
                 return;
             var temp = AppServices.Instance.GameInputSystem.GetPlayerInput();
-            Vector2 dir = mousePos - ControlledEntity.Position;
-            float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            if (velocity.x < -0.5f)
-                _nextCommand.Keys |= MovementKeys.Left;
-            if (velocity.x > 0.5f)
-                _nextCommand.Keys |= MovementKeys.Right;
-            if (velocity.y < -0.5f)
-                _nextCommand.Keys |= MovementKeys.Up;
-            if (velocity.y > 0.5f)
-                _nextCommand.Keys |= MovementKeys.Down;
+            //Vector2 dir = mousePos - ControlledEntity.Position;
+            //float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            //if (velocity.x < -0.5f)
+            //    _nextCommand.Keys |= MovementKeys.Left;
+            //if (velocity.x > 0.5f)
+            //    _nextCommand.Keys |= MovementKeys.Right;
+            //if (velocity.y < -0.5f)
+            //    _nextCommand.Keys |= MovementKeys.Up;
+            //if (velocity.y > 0.5f)
+            //    _nextCommand.Keys |= MovementKeys.Down;
         }
         protected override void ReadInput(in PlayerInputPacket input)
         {
 
-            if (temp.x > 0)
-            {
-                input.Keys = input.Keys | MovementKeys.Right;
-            }
+    //        if (temp.x > 0)
+    //        {
+    //            input.Keys = input.Keys | MovementKeys.Right;
+    //        }
 
-            ControlledEntity?.SetInput(
-    input.Keys.HasFlagFast(MovementKeys.Fire),
-    input.Keys.HasFlagFast(MovementKeys.Projectile),
-    input.Rotation,
-    velocity);
+    //        ControlledEntity?.SetInput(
+    //input.Keys.HasFlagFast(MovementKeys.Fire),
+    //input.Keys.HasFlagFast(MovementKeys.Projectile),
+    //input.Rotation,
+    //velocity);
         }
 
         protected override void GenerateInput(out PlayerInputPacket input)
         {
             input = _nextCommand;
-            _nextCommand.Keys = 0;
+            //_nextCommand.Keys = 0;
         }
     }
 }

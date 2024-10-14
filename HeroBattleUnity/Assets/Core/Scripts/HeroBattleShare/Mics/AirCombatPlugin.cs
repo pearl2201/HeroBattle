@@ -1,10 +1,8 @@
 ﻿using HeroBattle;
-using SharpSteer2.Database;
+using HeroBattle.FixedMath;
 using SharpSteer2;
-using System;
+using SharpSteer2.Database;
 using System.Collections.Generic;
-using System.Text;
-using System.Numerics;
 
 namespace HeroBattleShare.Mics
 {
@@ -20,11 +18,11 @@ namespace HeroBattleShare.Mics
 
         private void CreateDatabase()
         {
-            Vector3 center = Vector3.Zero;
+            Vector3f center = Vector3f.Zero;
             const float DIV = 10.0f;
-            Vector3 divisions = new Vector3(DIV, DIV, DIV);
+            Vector3f divisions = new Vector3f(DIV, DIV, DIV);
             const float DIAMETER = 10.0f;//Fighter.WORLD_RADIUS * 2;
-            Vector3 dimensions = new Vector3(DIAMETER, DIAMETER, DIAMETER);
+            Vector3f dimensions = new Vector3f(DIAMETER, DIAMETER, DIAMETER);
             _pd = new LocalityQueryProximityDatabase<IVehicle>(center, dimensions, divisions);
         }
 

@@ -21,7 +21,7 @@ namespace HeroBattleUnity.Gameplay
         {
             if (attached != null)
             {
-                this.transform.position = attached.position.Value.ToVector3();
+                this.transform.position = attached.Position.ToVector3();
             }
         }
 

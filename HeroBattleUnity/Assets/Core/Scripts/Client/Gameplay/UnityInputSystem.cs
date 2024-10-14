@@ -17,6 +17,6 @@ public class UnityInputSystem : Singleton<UnityInputSystem>, IGameInputSystem
     public Vector2f GetPlayerInput()
     {
         var baseInput = playerInput.Player.Move.ReadValue<Vector2>();
-        return new Vector2f((Fix64)baseInput.x, (Fix64)baseInput.y);
+        return new Vector2f(baseInput.x, baseInput.y);
     }
 }

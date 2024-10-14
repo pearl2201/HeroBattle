@@ -10,7 +10,7 @@ namespace HeroBattleShare.Factory
         public GameObject prefabBaseMinionView;
         public IBaseMinionView GetBaseMinionView(BaseMinion entity)
         {
-            var unityObject = Instantiate(prefabBaseMinionView, entity.position.Value.ToVector3(), Quaternion.identity);
+            var unityObject = Instantiate(prefabBaseMinionView, entity.Position.ToVector3(), Quaternion.identity);
             unityObject.name = $"Projectile_{entity.Id}";
             var view = unityObject.GetComponent<ClientMinionView>();
             view.attached = entity;

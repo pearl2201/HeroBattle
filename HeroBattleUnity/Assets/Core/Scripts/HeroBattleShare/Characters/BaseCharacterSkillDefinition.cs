@@ -9,7 +9,14 @@ namespace HeroBattleShare.Characters
     public abstract class BaseCharacterSkillDefinition
     {
         public string name;
-        public List<BaseCharacterSkillLevelDefinition> levels;
+        public int mana;
+        public int level;
+        public SkillDamageType attackRange;
+        public EffectStatus effects;
+
+        public int projectileRange;
+        public int projectileDamage;
+        public int projectileSpeed;
 
         public abstract void OnVisited(BaseMinion minion);
     }

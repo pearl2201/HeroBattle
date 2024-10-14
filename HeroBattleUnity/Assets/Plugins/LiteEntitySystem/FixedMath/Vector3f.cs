@@ -1,6 +1,9 @@
-﻿using LiteNetLib.Utils;
+﻿using HeroBattle.FixedMath;
+using LiteNetLib.Utils;
 using System;
-
+#if UNITY_EDITOR
+using UnityEngine;
+#endif
 namespace HeroBattle.FixedMath
 {
     public struct Vector3f : INetSerializable, IEquatable<Vector3f>, IFormattable
@@ -146,3 +149,13 @@ namespace HeroBattle.FixedMath
         }
     }
 }
+
+#if UNITY_5_3_OR_NEWER
+public static class Vector3fExtensions
+{
+    public static Vector3 ToVector3(this Vector3f v)
+    {
+        return new Vector3(v.x, v.y, v.z);
+    }
+}
+#endif

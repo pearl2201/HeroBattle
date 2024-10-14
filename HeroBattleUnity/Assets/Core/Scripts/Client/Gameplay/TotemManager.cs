@@ -1,11 +1,8 @@
-using Mirror;
-using System.Collections;
+using LiteEntitySystem.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using TMPro.Examples;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 
 public class TotemManager : MonoBehaviour
 {
@@ -15,14 +12,12 @@ public class TotemManager : MonoBehaviour
     public List<TotemItem> items;
     public List<Totem> totems;
     public bool lockInput;
-    public LudonPlayer player;
 
     public float inputXRange;
     public float inputYRange;
 
     public List<TotemItem> currentSelectTotemItems;
 
-    public PendingHero pendingHero;
 
     public List<GameObject> planeInputs;
     public TotemManagerState status;
@@ -43,20 +38,11 @@ public class TotemManager : MonoBehaviour
 
     }
 
-    public void ShowPutPendingHero(PendingHero hero)
-    {
-        pendingHero = hero;
-        status = TotemManagerState.PutHero;
-        planeInputs[(int)player.team].SetActive(true);
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
-        {
-            scoreLabel.text = "Score: " + player.score.ToString("D3");
-        }
+
 
         if (status == TotemManagerState.MatchTotem)
         {
@@ -78,7 +64,7 @@ public class TotemManager : MonoBehaviour
                 else
                 {
                     Debug.Log($"trigger totem");
-                    player.ConsumeTotems(currentSelectTotemItems.Select(x => x.data).ToList());
+
                     foreach (var item in currentSelectTotemItems)
                     {
                         item.SetTotemUnselected();
@@ -104,7 +90,7 @@ public class TotemManager : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && hitSuccess)
             {
                 status = TotemManagerState.None;
-                player.DropHero(hit.point);
+
 
             }
         }
@@ -360,14 +346,22 @@ public class TotemManager : MonoBehaviour
         }
         currentSelectTotemItems.Clear();
         firstTotem = null;
-        pendingHero = null;
+
     }
 
 
-    public void ShowWinnerInfo(LudonPlayer winner)
-    {
-        status = TotemManagerState.None;
-        winnerPopup.gameObject.SetActive(true);
-        winnerLabel.text = $"{winner.team} player win the game with {winner.score} point";
-    }
+    //public void ShowWinnerInfo(LudonPlayer winner)
+    //{
+    //    status = TotemManagerState.None;
+    //    winnerPopup.gameObject.SetActive(true);
+    //    winnerLabel.text = $"{winner.team} player win the game with {winner.score} point";
+    //}
+}
+
+
+public struct Totem
+{
+    public int x;
+    public int y;
+    public int value;
 }

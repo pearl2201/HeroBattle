@@ -1,16 +1,17 @@
-using Mirror;
+
+using LiteEntitySystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBehaviour : NetworkBehaviour
+public class TowerBehaviour
 {
-    [SyncVar]
-    public float hp = 10;
+
+    public SyncVar<float> hp;
     // Start is called before the first frame update
     void Start()
     {
-
+        hp.Value = 10f;
     }
 
     // Update is called once per frame
@@ -21,10 +22,10 @@ public class TowerBehaviour : NetworkBehaviour
 
     public void OnTakeDamage(float damage)
     {
-        hp -= damage;
+        hp.Value = hp.Value - damage;
         if (hp <= 0)
         {
-            NetworkServer.Destroy(gameObject);
+            //NetworkServer.Destroy(gameObject);
         }
     }
 }

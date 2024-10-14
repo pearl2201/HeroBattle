@@ -96,7 +96,7 @@ public class NetClient : MonoBehaviour, INetEventListener
             new LiteNetLibNetPeer(peer, true),
             (byte)PacketType.EntitySystem,
             NetworkGeneral.GameFPS);
-        _entityManager.GetEntities<BaseCharacter>().SubscribeToConstructed(player =>
+        _entityManager.GetEntities<BasePlayer>().SubscribeToConstructed(player =>
         {
             if (player.IsLocalControlled)
             {
