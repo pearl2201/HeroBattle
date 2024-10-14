@@ -64,19 +64,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nguye\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleServer\\HeroBattleServer.csproj",
+      "projectUniqueName": "D:\\Ann\\Dev\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleServer\\HeroBattleServer.csproj",
       "projectName": "HeroBattleServer",
-      "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleServer\\HeroBattleServer.csproj",
-      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-      "outputPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleServer\\obj\\",
+      "projectPath": "D:\\Ann\\Dev\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleServer\\HeroBattleServer.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "D:\\Ann\\Dev\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleServer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -91,11 +96,11 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleShare\\HeroBattleShare.csproj": {
-              "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleShare\\HeroBattleShare.csproj"
+            "D:\\Ann\\Dev\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleShare\\HeroBattleShare.csproj": {
+              "projectPath": "D:\\Ann\\Dev\\HeroBattle\\HeroBattleUnity\\Assets\\Core\\Scripts\\HeroBattleShare\\HeroBattleShare.csproj"
             },
-            "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj": {
-              "projectPath": "D:\\Ann\\fun\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj"
+            "D:\\Ann\\Dev\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj": {
+              "projectPath": "D:\\Ann\\Dev\\HeroBattle\\HeroBattleUnity\\Assets\\Plugins\\LiteEntitySystem\\LiteEntitySystem.csproj"
             }
           }
         }
@@ -130,7 +135,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
