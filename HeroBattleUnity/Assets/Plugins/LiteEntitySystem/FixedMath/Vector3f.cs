@@ -1,7 +1,7 @@
 ﻿using HeroBattle.FixedMath;
 using LiteNetLib.Utils;
 using System;
-#if UNITY_EDITOR
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 #endif
 namespace HeroBattle.FixedMath
