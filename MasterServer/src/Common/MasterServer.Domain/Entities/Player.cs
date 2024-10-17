@@ -55,6 +55,8 @@ namespace MasterServer.Domain.Entities
         public PlayerFeatureStatus FeatureStatus { get; set; }
 
         public List<PlayerData> PlayerDatas { get; set; }
+
+        public List<RefreshToken> RefreshTokens { get; set; }
         [Timestamp]
         public byte[] Timestamp { get; set; }
 

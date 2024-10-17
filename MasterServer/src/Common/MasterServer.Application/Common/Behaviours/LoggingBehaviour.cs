@@ -18,7 +18,7 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
     public async Task Process(TRequest request, CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
-        var playerId = _currentPlayerService.PlayerSubId;
+        var playerId = _currentPlayerService.PlayerId;
         var playerName = _currentPlayerService.PlayerName;
 
 

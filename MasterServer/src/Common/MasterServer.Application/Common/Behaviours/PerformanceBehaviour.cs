@@ -37,7 +37,7 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
         if (elapsedMilliseconds > 500)
         {
             var requestName = typeof(TRequest).Name;
-            var playerId = _currentPlayerService.PlayerSubId;
+            var playerId = _currentPlayerService.PlayerId;
             var playerName = _currentPlayerService.PlayerName;
 
 

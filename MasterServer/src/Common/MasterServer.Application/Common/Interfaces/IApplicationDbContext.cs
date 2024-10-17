@@ -2,7 +2,6 @@
 using MasterServer.Domain.Entities.BattlePasses;
 using MasterServer.Domain.Entities.Game;
 using MasterServer.Domain.Entities.GameNotification;
-using MasterServer.Domain.Entities.GameSave;
 using MasterServer.Domain.Entities.Leagues;
 using MasterServer.Domain.Entities.Mails;
 using MasterServer.Domain.Entities.Socials;
@@ -16,6 +15,8 @@ namespace MasterServer.Application.Common.Interfaces;
 public interface IApplicationDbContext
 {
     DbSet<Player> Players { get; set; }
+
+    DbSet<RefreshToken> RefreshTokens { get; set; }
     DbSet<GameSession> GameSessions { get; set; }
     DbSet<GameMatch> GameMatches { get; set; }
 
@@ -40,11 +41,9 @@ public interface IApplicationDbContext
 
     DbSet<LeagueSeasonRankReward> LeagueSeasonRankRewards { get; set; }
 
-    DbSet<PlayerBattleProfile> PlayerBattleProfiles { get; set; }
 
     DbSet<GameKvSettingConfig> GameKvSettingConfigs { get; set; }
 
-    DbSet<PlayerShopProfile> PlayerShopProfiles { get; set; }
 
     DbSet<BattlePassSeason> BattlePassSeasons { get; set; }
 

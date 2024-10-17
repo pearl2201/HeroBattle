@@ -23,14 +23,14 @@ public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRe
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         var authorizeAttributes = request.GetType().GetCustomAttributes<AuthorizeAttribute>();
-        if (request is GameRequestBase cmdBase && _currentPlayerService.PlayerSubId.HasValue)
+        if (request is BaseAuthRequest cmdBase && _currentPlayerService.PlayerId.HasValue)
         {
-            cmdBase.PlayerId = _currentPlayerService.PlayerSubId;
+            cmdBase.PlayerId = _currentPlayerService.PlayerId;
         }
         if (authorizeAttributes.Any())
         {
             // Must be authenticated player
-            if (_currentPlayerService.PlayerSubId == null)
+            if (_currentPlayerService.PlayerId == null)
             {
                 throw new UnauthorizedAccessException();
             }

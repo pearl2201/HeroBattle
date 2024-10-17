@@ -61,7 +61,7 @@ namespace MasterServer.Infrastructure.Services
             }
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        public async Task StopAsync(CancellationToken cancellationToken)
         {
 
         }

@@ -35,4 +35,12 @@
   <ItemGroup>
     <ProjectReference Include="..\MasterServer.Domain\MasterServer.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Game\Mails\" />
+    <Folder Include="Game\GamePasses\" />
+    <Folder Include="Game\Lobby\" />
+    <Folder Include="Game\Matchmaker\Commands\" />
+    <Folder Include="Game\Profile\" />
+  </ItemGroup>
 </Project>

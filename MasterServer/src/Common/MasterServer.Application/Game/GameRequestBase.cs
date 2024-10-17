@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MasterServer.Application.Game
 {
-    public class GameRequestBase
+    public class BaseAuthRequest
     {
         public long? PlayerId { get; set; }
     }

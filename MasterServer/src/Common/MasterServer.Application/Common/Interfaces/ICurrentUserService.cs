@@ -5,15 +5,11 @@ namespace MasterServer.Application.Common.Interfaces;
 
 public interface ICurrentPlayerService
 {
-    long? PlayerSubId { get; }
+    long? PlayerId { get; }
 
     string? PlayerName { get; }
 
     string? Email { get; }
 
     ClaimsPrincipal? Principals { get; }
-
-    Task<Player> QueryPlayer(IApplicationDbContext _dbContext);
-
-    Task<Player> QueryDetailPlayerInfo(IApplicationDbContext _dbContext);
 }

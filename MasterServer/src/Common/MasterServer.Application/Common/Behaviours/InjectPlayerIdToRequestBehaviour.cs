@@ -16,9 +16,9 @@ public class InjectPlayerIdToRequestBehaviour<TRequest, TResponse> : IPipelineBe
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        if (request is GameRequestBase cmdBase && _currentPlayerService.PlayerSubId.HasValue && !cmdBase.PlayerId.HasValue)
+        if (request is GameRequestBase cmdBase && _currentPlayerService.PlayerId.HasValue && !cmdBase.PlayerId.HasValue)
         {
-            cmdBase.PlayerId = _currentPlayerService.PlayerSubId;
+            cmdBase.PlayerId = _currentPlayerService.PlayerId;
         }
 
         // Player is authorized / authorization not required
