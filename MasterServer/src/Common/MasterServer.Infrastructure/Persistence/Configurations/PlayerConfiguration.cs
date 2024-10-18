@@ -11,6 +11,7 @@ namespace MasterServer.Infrastructure.Persistence.Configurations
             builder.HasIndex(e => e.UserName).AreNullsDistinct(true);
             builder.HasIndex(e => e.GoogleId).AreNullsDistinct(true);
             builder.HasIndex(e => e.FacebookId).AreNullsDistinct(true);
+            builder.HasIndex(e => e.DeviceId).AreNullsDistinct(true);
             builder.HasIndex(e => e.Initialized);
             builder.HasIndex(e => e.Role);
         }

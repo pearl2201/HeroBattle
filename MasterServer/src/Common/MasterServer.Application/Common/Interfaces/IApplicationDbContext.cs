@@ -45,11 +45,11 @@ public interface IApplicationDbContext
     DbSet<GameKvSettingConfig> GameKvSettingConfigs { get; set; }
 
 
-    DbSet<BattlePassSeason> BattlePassSeasons { get; set; }
+    DbSet<BattlePassDefinition> BattlePassSeasons { get; set; }
 
-    DbSet<BattlePassParticipant> BattlePassParticipants { get; set; }
+    DbSet<BattlePassSeasonParticipant> BattlePassParticipants { get; set; }
 
-    DbSet<BattlePassParticipantMilestone> BattlePassParticipantMilestones { get; set; }
+    DbSet<BattlePassSeasonParticipantMilestone> BattlePassParticipantMilestones { get; set; }
 
     DbSet<BattlePassMilestone> BattlePassMilestones { get; set; }
 

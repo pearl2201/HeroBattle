@@ -10,7 +10,7 @@ namespace MasterServer.Domain.Entities.Economy
     {
         public override EconomyType EconomyType => EconomyType.RealMoneyPurchase;
 
-        public List<PurchaseItemQuantity> Rewards { get; set; }
+        public List<RealMoneyPurchaseReward> Rewards { get; set; }
 
         public List<StoreIdentifer> StoreIdentifers { get; set; }
     }

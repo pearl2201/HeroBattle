@@ -27,7 +27,9 @@ namespace MasterServer.Domain.Entities.Leaderboard
         public string ScheduledReset { get; set; }
 
         public TieringStrategy TieringStrategy { get; set; }
-        public List<LeaderboardTier> TierList { get; set; }
+        public List<LeaderboardTier> Tiers { get; set; }
+
+        public List<LeaderboardVersion> Versions { get; set; }
     }
 
     public enum LeaderboardSortOrder

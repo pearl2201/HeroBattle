@@ -142,9 +142,9 @@ where T : class, IDisposable
     public DbSet<LeagueSeasonParticipantRank> LeagueSeasonParticipantRanks { get; set; }
     public DbSet<PlayerShopProfile> PlayerShopProfiles { get; set; }
    
-    public DbSet<BattlePassSeason> BattlePassSeasons { get; set; }
-    public DbSet<BattlePassParticipant> BattlePassParticipants { get; set; }
-    public DbSet<BattlePassParticipantMilestone> BattlePassParticipantMilestones { get; set; }
+    public DbSet<BattlePassDefinition> BattlePassSeasons { get; set; }
+    public DbSet<BattlePassSeasonParticipant> BattlePassParticipants { get; set; }
+    public DbSet<BattlePassSeasonParticipantMilestone> BattlePassParticipantMilestones { get; set; }
     public DbSet<BattlePassMilestone> BattlePassMilestones { get; set; }
     public DbSet<PlayerEdge> PlayerEdges { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿using MasterServer.Domain.Enums;
 using NodaTime;
+using NpgsqlTypes;
 using System.ComponentModel.DataAnnotations;
 
 namespace MasterServer.Domain.Entities.Mails
@@ -15,9 +16,7 @@ namespace MasterServer.Domain.Entities.Mails
 
         public string ImagePath { get; set; }
 
-        public Instant StartedAt { get; set; }
-
-        public Instant? ExpiredAt { get; set; }
+        public NpgsqlRange<Instant> Duration { get; set; }
 
         public GameMailTargetKind TargetKind { get; set; }
 

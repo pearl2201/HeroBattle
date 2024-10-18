@@ -1,8 +1,6 @@
 ﻿using MasterServer.Application.Common.Attributes;
 using MasterServer.Application.Common.Models;
 using MasterServer.Application.Game.Authentication.Commands;
-using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 
@@ -22,7 +20,7 @@ namespace MasterServer.Controllers.Games
         }
 
         [HttpPost("login/anonymous")]
-        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> LoginAnonymous(LoginCommand playerLoginCommand, CancellationToken cancellationToken)
+        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> LoginAnonymous(LoginAnonymousCommand playerLoginCommand, CancellationToken cancellationToken)
         {
             playerLoginCommand.RemoteIpAddress = GetRemoteIpAddress(HttpContext);
             playerLoginCommand.CountryCode = GetCountryCode(HttpContext);
@@ -31,7 +29,7 @@ namespace MasterServer.Controllers.Games
         }
 
         [HttpPost("login/facebook")]
-        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> LoginFacebook(LoginCommand playerLoginCommand, CancellationToken cancellationToken)
+        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> LoginFacebook(LoginFacebookCommand playerLoginCommand, CancellationToken cancellationToken)
         {
             playerLoginCommand.RemoteIpAddress = GetRemoteIpAddress(HttpContext);
             playerLoginCommand.CountryCode = GetCountryCode(HttpContext);
@@ -41,7 +39,7 @@ namespace MasterServer.Controllers.Games
 
 
         [HttpPost("login/google")]
-        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> LoginGoogle(LoginCommand playerLoginCommand, CancellationToken cancellationToken)
+        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> LoginGoogle(LoginGoogleCommand playerLoginCommand, CancellationToken cancellationToken)
         {
             playerLoginCommand.RemoteIpAddress = GetRemoteIpAddress(HttpContext);
             playerLoginCommand.CountryCode = GetCountryCode(HttpContext);
@@ -50,8 +48,8 @@ namespace MasterServer.Controllers.Games
         }
 
 
-        [HttpPost("login/anonymous")]
-        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> Login(LoginCommand playerLoginCommand, CancellationToken cancellationToken)
+        [HttpPost("login/credentials")]
+        public async Task<ActionResult<ServiceResult<PlayerLoginResponse>>> LoginCredentials(LoginCredentialsCommand playerLoginCommand, CancellationToken cancellationToken)
         {
             playerLoginCommand.RemoteIpAddress = GetRemoteIpAddress(HttpContext);
             playerLoginCommand.CountryCode = GetCountryCode(HttpContext);

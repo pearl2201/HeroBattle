@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MasterServer.Domain.Entities.Economy
 {
-    public class StoreIdentifer
+    public class StoreIdentifer : BaseAuditableEntity
     {
         public string ProductId { get; set; }
 

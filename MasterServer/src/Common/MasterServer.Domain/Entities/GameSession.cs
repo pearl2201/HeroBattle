@@ -1,4 +1,5 @@
-﻿using NodaTime;
+﻿using MasterServer.Domain.DomainEvent;
+using NodaTime;
 using System.ComponentModel.DataAnnotations;
 
 namespace MasterServer.Domain.Entities
@@ -16,5 +17,10 @@ namespace MasterServer.Domain.Entities
         public Instant? ConnectedAt { get; set; }
 
         public Instant? DisconnectedAt { get; set; }
+
+        public GameSession()
+        {
+            AddDomainEvent(new PlayerLoginEvent());
+        }
     }
 }

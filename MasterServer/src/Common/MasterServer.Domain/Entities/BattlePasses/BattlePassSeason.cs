@@ -1,6 +1,4 @@
-﻿using MasterServer.Domain.Enums;
-using MasterServer.Domain.Entities.Economy;
-using NodaTime;
+﻿using NodaTime;
 using NpgsqlTypes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,21 +10,15 @@ namespace MasterServer.Domain.Entities.BattlePasses
         [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        [ForeignKey(nameof(DefinitionId))]
+        public BattlePassDefinition Definition { get; set; }
 
-        public string Description { get; set; } 
+        public int DefinitionId { get; set; }
 
-        public BattlePassType Type { get; set; }
-
-        [ForeignKey(nameof(PurchaseDefinition))]
-        public VirtualPurchaseDefinition PurchaseDefinition { get; set; }
-
-        public string PurchaseDefinitionId { get; set; }
         public NpgsqlRange<Instant> Duration { get; set; }
 
-        public Instant? PublishedAt { get; set; }
+        public bool Expired { get; set; }
 
-        public List<BattlePassMilestone> Milestones { get; set; } = new();
-        public List<BattlePassParticipant> Participants { get; set; } = new();
+        public List<BattlePassSeasonParticipant> Participants { get; set; } = new();
     }
 }

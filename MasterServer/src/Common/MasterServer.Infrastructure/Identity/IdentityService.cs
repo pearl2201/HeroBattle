@@ -1,12 +1,10 @@
-﻿using Google.Apis.AndroidPublisher.v3.Data;
-using Google.Apis.Auth;
-using ICSharpCode.SharpZipLib.Zip;
+﻿using Google.Apis.Auth;
 using MasterServer.Application.Common.Interfaces;
 using MasterServer.Application.Common.Models;
+using MasterServer.Application.Helpers;
 using MasterServer.Domain.Entities;
-using MasterServer.Domain.Mics;
+using MasterServer.Domain.Utils;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -23,6 +21,7 @@ public class IdentityService : IIdentityService
     private readonly IApplicationDbContext _dbContext;
     private readonly ServerSetting _serverSetting;
     private readonly IRandomService _randomService;
+    private readonly IJwtUtils _jwtUtils;
     public IdentityService(IAuthorizationService authorizationService, ILogger<IdentityService> logger, IHttpClientFactory clientFactory, IApplicationDbContext dbContext)
     {
         _authorizationService = authorizationService;
@@ -54,7 +53,7 @@ public class IdentityService : IIdentityService
         return result.Succeeded;
     }
 
-    public async Task<ServiceResult<Player>> GetOrCreatePlayerByFirebasePlayerId(string username, string password)
+    public async Task<ServiceResult<Player>> GetOrCreatePlayerByCredentials(string username, string password)
     {
         var player = await _dbContext.Players.Where(x => x.UserName == username).FirstOrDefaultAsync();
         if (player != null && BCrypt.Net.BCrypt.Verify(password, player.HashedPassword))
@@ -107,7 +106,7 @@ public class IdentityService : IIdentityService
             return ServiceResult.Failed<Player>(ServiceError.AuthenticationCredentialIsNotCorrect);
         }
 
-        var player = await _dbContext.Players.Where(x => x.GoogleId == verifyResult.UserId).FirstOrDefaultAsync();
+        var player = await _dbContext.Players.Where(x => x.FacebookId == verifyResult.UserId).FirstOrDefaultAsync();
 
         if (player == null)
         {
@@ -192,4 +191,44 @@ public class IdentityService : IIdentityService
         };
     }
 
+    public async Task<ServiceResult<Player>> GetOrCreatePlayerByDeviceId(string deviceId)
+    {
+        var player = await _dbContext.Players.Where(x => x.DeviceId == deviceId).FirstOrDefaultAsync();
+
+        if (player == null)
+        {
+            player = new Player()
+            {
+                DeviceId = deviceId,
+                NickName = "Adventure",
+
+            };
+        }
+
+        return ServiceResult.Success(player);
+    }
+
+    public async Task<IdentityLoginResult> ContinueLoginFlow(Player player, string version, string countryCode, string ipAddress)
+    {
+
+        player.LatestOnlineAt = DateTimeHelper.InstanceNow;
+        player.CountryCode = countryCode;
+        player.GameVersion = version;
+        var jwtToken = _jwtUtils.GenerateJwtToken(version, player);
+        var refreshToken = _jwtUtils.GenerateRefreshToken(ipAddress.ToString());
+        player.RefreshTokens.Add(refreshToken);
+        var session = new GameSession()
+        {
+            Announced = false,
+            PlayerId = player.Id
+        };
+        _dbContext.GameSessions.Add(session);
+        await _dbContext.GameSessions.Where(x => x.PlayerId == player.Id).OrderByDescending(x => x.CreatedAt).Skip(5).ExecuteDeleteAsync();
+        return new IdentityLoginResult
+        {
+            AccessToken = jwtToken,
+            RefreshToken = refreshToken.Token,
+            SessionId = session.Id.ToString()
+        };
+    }
 }

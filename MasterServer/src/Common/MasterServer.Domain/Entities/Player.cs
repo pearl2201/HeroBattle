@@ -1,6 +1,7 @@
 ﻿using MasterServer.Domain.Entities.BattlePasses;
 using MasterServer.Domain.Entities.Economy;
 using MasterServer.Domain.Entities.GameSave;
+using MasterServer.Domain.Entities.Leaderboard;
 using MasterServer.Domain.Entities.Leagues;
 using MasterServer.Domain.Entities.Mails;
 using MasterServer.Domain.Entities.Socials;
@@ -18,6 +19,8 @@ namespace MasterServer.Domain.Entities
         public long Id { get; set; }
 
         public string UserName { get; set; }
+
+        public string DeviceId { get; set; }
 
         public string GoogleId { get; set; }
 
@@ -43,6 +46,8 @@ namespace MasterServer.Domain.Entities
         public string LockReason { get; set; }
 
         public string CountryCode { get; set; }
+
+        public string GameVersion { get; set; }
 
         public Instant? LatestOnlineAt { get; set; }
 
@@ -81,8 +86,12 @@ namespace MasterServer.Domain.Entities
 
         public List<PlayerMail> MailBox { get; set; } = new List<PlayerMail>();
 
-        public List<LeagueSeasonParticipant> LeagueSeasonParticipants { get; set; } = new List<LeagueSeasonParticipant>();
 
-        public List<BattlePassParticipant> BattlePassParticipants { get; set; } = new List<BattlePassParticipant>();
+        public List<BattlePassSeasonParticipant> BattlePassParticipants { get; set; } = new List<BattlePassSeasonParticipant>();
+
+        public List<LeaderboardVersionParticipant> LeaderboardVersionParticipants { get; set; } = new List<LeaderboardVersionParticipant>();
+
+        public List<PlayerFile> PlayerFiles { get; set; } = new List<PlayerFile>();
+
     }
 }

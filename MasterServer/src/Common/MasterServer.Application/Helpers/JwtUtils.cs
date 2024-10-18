@@ -18,7 +18,7 @@ namespace MasterServer.Application.Helpers
     {
         public string GenerateJwtToken(string version, Player player);
         public int? ValidateJwtToken(string token);
-        public RefreshToken GenerateRefreshToken(string ipAddress, bool isCheckUnique);
+        public RefreshToken GenerateRefreshToken(string ipAddress);
     }
 
     public class JwtUtils : IJwtUtils
@@ -87,7 +87,7 @@ namespace MasterServer.Application.Helpers
             }
         }
 
-        public RefreshToken GenerateRefreshToken(string ipAddress, bool isCheckUnique)
+        public RefreshToken GenerateRefreshToken(string ipAddress)
         {
             var refreshToken = new RefreshToken
             {
@@ -106,7 +106,7 @@ namespace MasterServer.Application.Helpers
                 var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
                 // ensure token is unique by checking against db
 
-                var tokenIsUnique = isCheckUnique ? !_context.Players.Any(u => u.RefreshTokens.Any(t => t.Token == token)) : true;
+                var tokenIsUnique =  !_context.Players.Any(u => u.RefreshTokens.Any(t => t.Token == token)) ;
 
                 if (!tokenIsUnique)
                     return getUniqueToken();

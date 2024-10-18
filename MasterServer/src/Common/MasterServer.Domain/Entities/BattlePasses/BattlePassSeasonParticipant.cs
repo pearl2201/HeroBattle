@@ -1,9 +1,11 @@
 ﻿using NodaTime;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MasterServer.Domain.Entities.BattlePasses
 {
-    public class BattlePassParticipant
+    public class BattlePassSeasonParticipant : BaseAuditableEntity
     {
+        [ForeignKey(nameof(PlayerId))]
         public Player Player { get; set; }
         public long PlayerId { get; set; }
 
@@ -11,9 +13,9 @@ namespace MasterServer.Domain.Entities.BattlePasses
         public Instant? PremiumActivedAt { get; set; }
 
         public int SeasonId { get; set; }
-
+        [ForeignKey(nameof(SeasonId))]
         public BattlePassSeason Season { get; set; }
 
-        public List<BattlePassParticipantMilestone> MilestoneParticipants { get; set; }
+        public List<BattlePassSeasonParticipantMilestone> MilestoneParticipants { get; set; }
     }
 }

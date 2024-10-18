@@ -36,7 +36,7 @@ namespace MasterServer.Application.Game.Authentication.Commands
         private readonly IConfiguration _configuration;
         private readonly IJwtUtils _jwtUtils;
         private readonly IWebsocketNofiticationService _websocketNofiticationService;
-        public RefreshTokenCommandHandler(IApplicationDbContext dbContext, IConfiguration configuration, IDateTimeService dateTime, IFirebaseAuthService firebaseAuthService, IIdentityService identityService, IFeatureManagerSnapshot featureHubConfig, ILogger<AuthenticateCommandHandler> logger, IJwtUtils jwtUtils, ICurrentPlayerService currentPlayerService, IWebsocketNofiticationService websocketNofiticationService)
+        public RefreshTokenCommandHandler(IApplicationDbContext dbContext, IConfiguration configuration, IDateTimeService dateTime, IFirebaseAuthService firebaseAuthService, IIdentityService identityService, IFeatureManagerSnapshot featureHubConfig, ILogger<LoginAnonymousCommandHandler> logger, IJwtUtils jwtUtils, ICurrentPlayerService currentPlayerService, IWebsocketNofiticationService websocketNofiticationService)
         {
             _dbContext = dbContext;
             _dateTime = dateTime;
